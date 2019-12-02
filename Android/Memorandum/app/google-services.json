@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "771793776293",
+    "firebase_url": "https://memorandum-gsm.firebaseio.com",
+    "project_id": "memorandum-gsm",
+    "storage_bucket": "memorandum-gsm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:771793776293:android:edd8f52e60efac8472a74c",
+        "android_client_info": {
+          "package_name": "com.memorandum"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "771793776293-02q34jn6dl1nkg0nhdsb4i24bjfqo17a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBicGzenkTVWXyu9gwnJTF4ELbzOkAdzB0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "771793776293-02q34jn6dl1nkg0nhdsb4i24bjfqo17a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
