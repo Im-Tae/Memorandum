@@ -6,6 +6,7 @@
         <item name="colorPrimary">@android:color/white</item>
         <item name="colorPrimaryDark">@android:color/white</item>
         <item name="colorAccent">#D1D1D1</item>
+        <item name="android:windowActionBarOverlay">true</item>
     </style>
 
 </resources>

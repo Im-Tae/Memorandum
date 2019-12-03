@@ -5,7 +5,8 @@ import android.os.Bundle
 import android.view.WindowManager
 import android.view.animation.AnimationUtils
 import com.memorandum.R
-import com.memorandum.User.LoginActivity
+import com.memorandum.user.LoginActivity
+import com.memorandum.user.LoginSelectActivity
 import kotlinx.android.synthetic.main.activity_splash.*
 import org.jetbrains.anko.startActivity
 
@@ -25,16 +26,16 @@ class SplashActivity : AppCompatActivity() {
                 headingText.startAnimation(textAnimation)
                 splashlayout.startAnimation(layoutAnimation)
 
-                sleep(4000)
-                startActivity<LoginActivity>()
+                sleep(1000) //4000
+                if (true) {
+                    startActivity<LoginSelectActivity>()
+                } else {
+                    startActivity<LoginActivity>()
+                }
                 finish()
             }
         }
         splashScreen.start()
-
-
-
-
 
     }
 }

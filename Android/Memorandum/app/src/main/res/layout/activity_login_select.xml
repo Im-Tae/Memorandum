@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".user.LoginSelectActivity"
+    android:background="#2E2E2E"
+
+    >
+
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="270dp"
+        android:fontFamily="@font/courgette"
+        android:text="Memorandum"
+        android:textAlignment="center"
+        android:textColor="#E8E8E8"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/headingText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/courgette"
+        android:text="기억을 기록하다."
+        android:textColor="#D1D1D1"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleText" />
+
+    <Button
+        android:id="@+id/changeRegisterButton"
+        android:layout_width="200dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button"
+        android:text="회원가입"
+        android:textColor="#2E2E2E"
+        android:textSize="17dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headingText" />
+
+    <Button
+        android:id="@+id/goolgeLoginButton"
+        android:layout_width="200dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button"
+        android:backgroundTint="#EA4335"
+        android:text="구글로 로그인"
+        android:textColor="#D1D1D1"
+        android:textSize="17dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/changeRegisterButton" />
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:text="이미 계정이 있으십니까?"
+        android:textColor="#D1D1D1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/goolgeLoginButton" />
+
+    <Button
+        android:id="@+id/changeLoginButton"
+        android:layout_width="200dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/button"
+        android:text="로그인"
+        android:textColor="#2E2E2E"
+        android:textSize="17dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

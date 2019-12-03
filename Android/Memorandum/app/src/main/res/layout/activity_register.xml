@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".user.LoginActivity"
+    tools:context=".user.RegisterActivity"
     android:background="#2E2E2E"
     android:layout_gravity="center"
 
@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="270dp"
         android:fontFamily="@font/courgette"
-        android:text="로그인"
+        android:text="회원가입"
         android:textAlignment="center"
         android:textColor="#E8E8E8"
         android:textSize="35sp"
@@ -27,7 +27,7 @@
         />
 
     <EditText
-        android:id="@+id/login_email"
+        android:id="@+id/register_email"
         android:layout_width="200dp"
         android:layout_height="40dp"
         android:layout_marginTop="20dp"
@@ -46,7 +46,7 @@
         app:layout_constraintTop_toBottomOf="@+id/titleText" />
 
     <EditText
-        android:id="@+id/login_password"
+        android:id="@+id/register_password"
         android:layout_width="200dp"
         android:layout_height="40dp"
         android:layout_marginTop="5dp"
@@ -63,34 +63,21 @@
         android:textColorLink="#D1D1D1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_email" />
+        app:layout_constraintTop_toBottomOf="@+id/register_email" />
 
     <Button
-        android:id="@+id/loginButton"
+        android:id="@+id/registerButton"
         android:layout_width="100dp"
         android:layout_height="35dp"
         android:layout_marginTop="20dp"
-        android:text="로그인"
+        android:text="회원가입"
         android:textColor="#2E2E2E"
-        android:textSize="25dp"
+        android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_password"
+        app:layout_constraintTop_toBottomOf="@+id/register_password"
         android:background="@drawable/button"/>
-
-    <TextView
-        android:id="@+id/changePasswordResetButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="비밀번호를 잊어버리셨나요?"
-        android:textStyle="bold"
-        android:textSize="12dp"
-        android:textColor="#D1D1D1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginButton" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
