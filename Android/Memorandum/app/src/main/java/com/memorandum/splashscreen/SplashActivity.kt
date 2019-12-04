@@ -26,7 +26,7 @@ class SplashActivity : AppCompatActivity() {
                 headingText.startAnimation(textAnimation)
                 splashlayout.startAnimation(layoutAnimation)
 
-                sleep(1000) //4000
+                sleep(3000)
                 if (true) {
                     startActivity<LoginSelectActivity>()
                 } else {

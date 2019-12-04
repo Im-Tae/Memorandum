@@ -5,10 +5,7 @@ import android.os.Bundle
 import android.view.WindowManager
 import android.view.animation.AnimationUtils
 import com.memorandum.R
-import com.memorandum.utils.AnimationUtil
-import com.memorandum.utils.FirebaseManager
-import com.memorandum.utils.HideKeyboard
-import com.memorandum.utils.ToastMessage
+import com.memorandum.util.*
 import kotlinx.android.synthetic.main.activity_password_reset.*
 
 class PasswordResetActivity : AppCompatActivity() {
@@ -20,7 +17,7 @@ class PasswordResetActivity : AppCompatActivity() {
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_password_reset)
 
-        val animation = AnimationUtils.loadAnimation(this, R.anim.login_register_screen)
+        val animation = AnimationUtils.loadAnimation(this, R.anim.appear)
 
         reset_email.startAnimation(animation)
         resetButton.startAnimation(animation)
@@ -29,16 +26,12 @@ class PasswordResetActivity : AppCompatActivity() {
 
             HideKeyboard.hideKeyboard(this.currentFocus, this)
 
-            if (reset_email.text.toString() != "") {
-                if (FirebaseManager.checkEmail(reset_email.text.toString().trim())) {
+            if (GetNetworkInfo.networkInfo(this)) {
+                if (CheckValidUtil.checkValid(this, reset_email.text.toString().trim(), reset_email)) {
                     FirebaseManager.resetPassword(this, reset_email.text.toString().trim())
-                } else {
-                    AnimationUtil.animation(reset_email, "Shake")
-                    ToastMessage.toastMessage(this, "올바른 이메일을 입력해주세요.", "error")
                 }
             } else {
-                AnimationUtil.animation(reset_email, "Shake")
-                ToastMessage.toastMessage(this, "이메일을 입력해주세요.", "error")
+                ToastMessage.toastMessage(this, "와이파이 연결을 확인해주세요.", "error")
             }
         }
     }

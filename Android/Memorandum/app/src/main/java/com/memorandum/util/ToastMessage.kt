@@ -1,4 +1,4 @@
-package com.memorandum.utils
+package com.memorandum.util
 
 import android.content.Context
 import android.widget.Toast

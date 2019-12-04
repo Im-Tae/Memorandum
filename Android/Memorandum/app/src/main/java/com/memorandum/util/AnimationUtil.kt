@@ -1,8 +1,9 @@
-package com.memorandum.utils
+package com.memorandum.util
 
 import android.view.View
 import com.daimajia.androidanimations.library.Techniques
 import com.daimajia.androidanimations.library.YoYo
+import com.memorandum.R
 
 class AnimationUtil {
     companion object {
@@ -12,6 +13,8 @@ class AnimationUtil {
                 "Tada" -> YoYo.with(Techniques.Tada).duration(700).playOn(view)
                 "Shake" -> YoYo.with(Techniques.Shake).duration(700).playOn(view)
             }
+
+            view.setBackgroundResource(R.drawable.error_textbox)
         }
     }
 }
