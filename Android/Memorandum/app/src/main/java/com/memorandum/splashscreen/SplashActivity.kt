@@ -1,12 +1,15 @@
 package com.memorandum.splashscreen
 
+import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
 import android.view.animation.AnimationUtils
+import com.memorandum.MainActivity
 import com.memorandum.R
 import com.memorandum.user.LoginActivity
 import com.memorandum.user.LoginSelectActivity
+import com.memorandum.util.SharedPreferenceManager
 import kotlinx.android.synthetic.main.activity_splash.*
 import org.jetbrains.anko.startActivity
 
@@ -14,6 +17,7 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_splash)
 
@@ -27,10 +31,10 @@ class SplashActivity : AppCompatActivity() {
                 splashlayout.startAnimation(layoutAnimation)
 
                 sleep(3000)
-                if (true) {
-                    startActivity<LoginSelectActivity>()
+                if (SharedPreferenceManager.getUserId(applicationContext) != "") {
+                    startActivity<MainActivity>()
                 } else {
-                    startActivity<LoginActivity>()
+                    startActivity<LoginSelectActivity>()
                 }
                 finish()
             }

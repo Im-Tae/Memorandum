@@ -5,7 +5,7 @@ import android.view.View
 import com.memorandum.R
 import java.util.regex.Pattern
 
-class CheckValidUtil {
+class CheckValid {
     companion object {
 
         private val EMAIL_ADDRESS_PATTERN: Pattern = Pattern.compile(  "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" + "\\@" + "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" + "(" + "\\." + "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" + ")+" )
@@ -17,18 +17,18 @@ class CheckValidUtil {
             passwordView.setBackgroundResource(R.drawable.textbox)
 
             if (email == "" && password != "") {
-                AnimationUtil.animation(emailView, "Shake")
+                Animation.shakeAnimation(emailView, "Shake")
                 ToastMessage.toastMessage(context, "이메일을 입력해주세요.", "error")
             } else if (email != "" && password == "") {
-                AnimationUtil.animation(passwordView, "Shake")
+                Animation.shakeAnimation(passwordView, "Shake")
                 ToastMessage.toastMessage(context, "비밀번호를 입력해주세요.", "error")
             } else if (email == "" && password == "") {
-                AnimationUtil.animation(emailView, "Shake")
-                AnimationUtil.animation(passwordView, "Shake")
+                Animation.shakeAnimation(emailView, "Shake")
+                Animation.shakeAnimation(passwordView, "Shake")
                 ToastMessage.toastMessage(context, "이메일과 비밀번호를 입력해주세요.", "error")
             } else {
                 if (checkEmail(email)) { return true } else  {
-                    AnimationUtil.animation(emailView, "Shake")
+                    Animation.shakeAnimation(emailView, "Shake")
                     ToastMessage.toastMessage(context, "올바른 이메일을 입력해주세요.", "error")
                 }
             }
@@ -41,11 +41,11 @@ class CheckValidUtil {
 
             if (email != "") {
                 if (checkEmail(email)) { return true } else  {
-                    AnimationUtil.animation(emailView, "Shake")
+                    Animation.shakeAnimation(emailView, "Shake")
                     ToastMessage.toastMessage(context, "올바른 이메일을 입력해주세요.", "error")
                 }
             } else {
-                AnimationUtil.animation(emailView, "Shake")
+                Animation.shakeAnimation(emailView, "Shake")
                 ToastMessage.toastMessage(context, "이메일을 입력해주세요.", "error")
             }
             return false

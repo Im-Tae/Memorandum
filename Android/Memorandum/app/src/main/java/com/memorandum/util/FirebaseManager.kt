@@ -19,7 +19,6 @@ class FirebaseManager {
                 if (it.isSuccessful) {
                     ToastMessage.toastMessage(context, "회원가입 완료", "success")
                     user = auth.currentUser
-
                     intent = Intent(context, MainActivity::class.java)
                     context.startActivity(intent)
                 } else {
@@ -33,6 +32,7 @@ class FirebaseManager {
                     if (it.isSuccessful) {
                         ToastMessage.toastMessage(context, "로그인 완료", "success")
                         user = auth.currentUser
+                        SharedPreferenceManager.setUserId(context, auth.currentUser.toString())
                         intent = Intent(context, MainActivity::class.java)
                         context.startActivity(intent)
                     } else {

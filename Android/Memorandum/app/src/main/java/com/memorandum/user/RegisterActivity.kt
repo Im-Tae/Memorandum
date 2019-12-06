@@ -1,9 +1,9 @@
 package com.memorandum.user
 
+import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
-import android.view.animation.AnimationUtils
 import com.memorandum.R
 import com.memorandum.util.*
 import kotlinx.android.synthetic.main.activity_register.*
@@ -13,22 +13,20 @@ class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_register)
 
-        val animation = AnimationUtils.loadAnimation(this, R.anim.appear)
-
-        register_email.startAnimation(animation)
-        register_password.startAnimation(animation)
-        registerButton.startAnimation(animation)
+        Animation.appearAnimation(this, register_email, register_password, registerButton)
 
         registerButton.setOnClickListener {
 
             HideKeyboard.hideKeyboard(this.currentFocus, this)
 
             if (GetNetworkInfo.networkInfo(this)) {
-                if (CheckValidUtil.checkValid(this, register_email.text.toString().trim(), register_password.text.toString().trim(), register_email, register_password)) {
+                if (CheckValid.checkValid(this, register_email.text.toString().trim(), register_password.text.toString().trim(), register_email, register_password)) {
                     FirebaseManager.registerUser(this, register_email.text.toString().trim(), register_password.text.toString().trim())
                 }
             } else {

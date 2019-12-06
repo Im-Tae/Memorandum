@@ -1,9 +1,9 @@
 package com.memorandum.user
 
+import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
-import android.view.animation.AnimationUtils
 import com.memorandum.util.FirebaseManager.Companion.loginUser
 import com.memorandum.R
 import com.memorandum.util.*
@@ -15,24 +15,20 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_login)
 
-        val animation = AnimationUtils.loadAnimation(this, R.anim.appear)
-
-
-        login_email.startAnimation(animation)
-        login_password.startAnimation(animation)
-        loginButton.startAnimation(animation)
-        changePasswordResetButton.startAnimation(animation)
+        Animation.appearAnimation(this, login_email, login_password, loginButton, changePasswordResetButton)
 
         loginButton.setOnClickListener {
 
             HideKeyboard.hideKeyboard(this.currentFocus, this)
 
             if (GetNetworkInfo.networkInfo(this)) {
-                if (CheckValidUtil.checkValid(this, login_email.text.toString().trim(), login_password.text.toString().trim() , login_email, login_password)) {
+                if (CheckValid.checkValid(this, login_email.text.toString().trim(), login_password.text.toString().trim() , login_email, login_password)) {
                     loginUser(applicationContext, login_email.text.toString().trim(), login_password.text.toString().trim())
                 }
             } else {

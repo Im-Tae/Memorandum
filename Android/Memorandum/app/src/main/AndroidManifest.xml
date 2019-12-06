@@ -11,9 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".WriteActivity"></activity>
         <activity android:name=".user.PasswordResetActivity" />
         <activity android:name=".user.RegisterActivity" />
-        <activity android:name=".user.GoogleLogin" />
         <activity android:name=".user.LoginSelectActivity" />
         <activity android:name=".splashscreen.SplashActivity">
             <intent-filter>
@@ -21,9 +21,12 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity android:name=".user.LoginActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity">
+
+        </activity>
     </application>
 
 </manifest>
