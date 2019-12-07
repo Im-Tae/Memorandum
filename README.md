@@ -18,9 +18,23 @@ Moblie, PC interlocking notepad project
 
 ##### - Login
 
+<p float="left">
+  
+<img src="https://github.com/Im-Tae/Memorandum/blob/master/Prototype/LoginSelectScreen.PNG?raw=true" width = "200" height = "370"  />  
+  
+<img src="https://github.com/Im-Tae/Memorandum/blob/master/Prototype/LoginScreen.PNG?raw=true" width = "200" height = "370" />  
 
+<img src="https://github.com/Im-Tae/Memorandum/blob/master/Prototype/RegisterScreen.PNG" width = "200" height = "370" />  
 
+<img src="https://github.com/Im-Tae/Memorandum/blob/master/Prototype/ResetPasswordScreen.PNG?raw=true" width = "200" height = "370" />  
 
+로그인 선택, 로그인, 회원가입, 비밀번호 재설정 화면입니다.
+
+<img src="https://github.com/Im-Tae/Memorandum/blob/master/Prototype/LoginScreen.gif?raw=true" width = "300" height = "550" /> 
+
+##### - Main
+
+</p>
 
 
 
