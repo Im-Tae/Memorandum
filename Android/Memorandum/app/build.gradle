@@ -26,6 +26,7 @@ android {
 }
 
 dependencies {
+    implementation 'com.github.f0ris.sweetalert:library:1.5.1'
     implementation "com.daimajia.swipelayout:library:1.2.0@aar"
     implementation 'com.daimajia.easing:library:2.0@aar'
     implementation 'com.daimajia.androidanimations:library:2.3@aar'

@@ -3,11 +3,13 @@ package com.memorandum
 import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.WindowManager
-import com.daimajia.swipe.SwipeLayout
+import com.memorandum.util.FirebaseManager
 import com.memorandum.util.ToastMessage
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.custom_listview.*
+import org.jetbrains.anko.startActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         Memo("테스트", "테스트입니다."),
         Memo("테스트", "테스트입니다."),
         Memo("테스트", "테스트입니다.")
+
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,8 +33,27 @@ class MainActivity : AppCompatActivity() {
         val memoAdapter = MemoAdapter(this, memoList)
         recyclerView.adapter = memoAdapter
 
+    }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.add, menu)
+        menuInflater.inflate(R.menu.logout, menu)
+        return true
+    }
 
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+
+        when(item?.itemId) {
+            R.id.action_addMemo -> {
+                startActivity<WriteMemoActivity>()
+            }
+
+            R.id.action_logout -> {
+                FirebaseManager.logout(this)
+            }
+        }
+
+        return true
     }
 
     private var lastTimeBackPressed: Long = 0

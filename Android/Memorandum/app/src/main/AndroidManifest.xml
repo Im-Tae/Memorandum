@@ -9,9 +9,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".WriteActivity"></activity>
+        android:theme="@style/MainTheme"
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:replace="android:icon">
+        <activity android:name=".WriteMemoActivity" android:theme="@style/ShowMemoTheme" ></activity>
         <activity android:name=".user.PasswordResetActivity" />
         <activity android:name=".user.RegisterActivity" />
         <activity android:name=".user.LoginSelectActivity" />
@@ -21,12 +22,11 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity android:name=".user.LoginActivity" />
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/MemoTheme"></activity>
     </application>
 
 </manifest>

@@ -1,9 +1,9 @@
 <com.daimajia.swipe.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="170dp"
     android:id="@+id/swipeLayout"
-    android:paddingBottom="10dp"
-    android:paddingEnd="10dp"
+    android:paddingBottom="7dp"
+    android:paddingStart="7dp"
     >
     <!-- Bottom View Start-->
     <LinearLayout
@@ -12,7 +12,16 @@
         android:layout_width="50dp"
         android:weightSum="1"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_clear_black_24dp"
+            android:layout_gravity="center"
+            ></ImageView>
         <!--What you want to show-->
     </LinearLayout>
     <!-- Bottom View End-->

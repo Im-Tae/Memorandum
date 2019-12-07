@@ -28,6 +28,8 @@ Moblie, PC interlocking notepad project
 
 [Toasty]( https://github.com/GrenderG/Toasty )
 
+[Sweet Alert Dialog]( https://github.com/pedant/sweet-alert-dialog )
+
 [AndroidSwipeLayout]( https://github.com/daimajia/AndroidSwipeLayout )
 
 [RecyclerView]( https://developer.android.com/reference/android/support/v7/widget/RecyclerView )

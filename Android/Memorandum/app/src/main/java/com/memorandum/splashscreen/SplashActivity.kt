@@ -3,6 +3,7 @@ package com.memorandum.splashscreen
 import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.WindowManager
 import android.view.animation.AnimationUtils
 import com.memorandum.MainActivity
