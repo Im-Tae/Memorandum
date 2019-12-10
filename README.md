@@ -38,6 +38,18 @@ Moblie, PC interlocking notepad project
 
 
 
+## 📑 Manual
+
+##### - 메모
+
+
+
+##### - 메뉴
+
+
+
+
+
 ##  📂 Library
 
 [Toasty]( https://github.com/GrenderG/Toasty )
@@ -53,4 +65,6 @@ Moblie, PC interlocking notepad project
 [Firebase]( https://firebase.google.com/docs/android/setup )
 
 [Anko]( https://github.com/Kotlin/anko ) -  Now deprecated.
+
+
 
