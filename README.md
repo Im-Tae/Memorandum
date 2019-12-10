@@ -20,6 +20,7 @@ Moblie, PC interlocking notepad project
 
 <p float="left">
 
+
 <img src="https://github.com/Im-Tae/Memorandum/blob/master/Prototype/LoginSelectScreen.PNG?raw=true" width = "200" height = "370"  />  
 
 <img src="https://github.com/Im-Tae/Memorandum/blob/master/Prototype/LoginScreen.PNG?raw=true" width = "200" height = "370" />  
@@ -38,21 +39,13 @@ Moblie, PC interlocking notepad project
 
 <p float="left">
 
+
 <img src="https://github.com/Im-Tae/Memorandum/blob/master/Prototype/Main_Empty.PNG?raw=true" width = "200" height = "370"  />  
 
 <img src="https://github.com/Im-Tae/Memorandum/blob/master/Prototype/Main_NotEmpty1.PNG?raw=true" width = "200" height = "370" />  
 
 <img src="https://github.com/Im-Tae/Memorandum/blob/master/Prototype/Main_NotEmpty2.PNG?raw=true" width = "200" height = "370" />  
 
-<<<<<<< HEAD
-<img src="https://github.com/Im-Tae/Memorandum/blob/master/Prototype/Main_WriteMemo.PNG?raw=true" width = "200" height = "370" /> 
-
-<img src="https://github.com/Im-Tae/Memorandum/blob/master/Prototype/Main_EditMemo1.PNG?raw=true" width = "200" height = "370" /> 
-
-<img src="https://github.com/Im-Tae/Memorandum/blob/master/Prototype/Main_EditMemo2.PNG?raw=true" width = "200" height = "370" /> 
-
-메모 작성, 삭제, 수정이 있는 메인화면입니다.
-=======
 <img src="https://github.com/Im-Tae/Memorandum/blob/master/Prototype/Main_WriteMemo.PNG?raw=true" width = "200" height = "370" />  
 
 <img src="https://github.com/Im-Tae/Memorandum/blob/master/Prototype/Main_EditMemo1.PNG?raw=true" width = "200" height = "370" />  
@@ -60,7 +53,6 @@ Moblie, PC interlocking notepad project
 <img src="https://github.com/Im-Tae/Memorandum/blob/master/Prototype/Main_EditMemo2.PNG?raw=true" width = "200" height = "370" />  
 
 메모 생성, 확인, 삭제, 수정을 할 수 있는 메인화면입니다.
->>>>>>> 448c9a0d7217ba551b2055687018291f17cd8bab
 
 <img src="https://github.com/Im-Tae/Memorandum/blob/master/Prototype/MainScreen.gif?raw=true" width = "300" height = "550" /> 
 
