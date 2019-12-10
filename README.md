@@ -44,6 +44,7 @@ Moblie, PC interlocking notepad project
 
 <img src="https://github.com/Im-Tae/Memorandum/blob/master/Prototype/Main_NotEmpty2.PNG?raw=true" width = "200" height = "370" />  
 
+<<<<<<< HEAD
 <img src="https://github.com/Im-Tae/Memorandum/blob/master/Prototype/Main_WriteMemo.PNG?raw=true" width = "200" height = "370" /> 
 
 <img src="https://github.com/Im-Tae/Memorandum/blob/master/Prototype/Main_EditMemo1.PNG?raw=true" width = "200" height = "370" /> 
@@ -51,11 +52,37 @@ Moblie, PC interlocking notepad project
 <img src="https://github.com/Im-Tae/Memorandum/blob/master/Prototype/Main_EditMemo2.PNG?raw=true" width = "200" height = "370" /> 
 
 메모 작성, 삭제, 수정이 있는 메인화면입니다.
+=======
+<img src="https://github.com/Im-Tae/Memorandum/blob/master/Prototype/Main_WriteMemo.PNG?raw=true" width = "200" height = "370" />  
+
+<img src="https://github.com/Im-Tae/Memorandum/blob/master/Prototype/Main_EditMemo1.PNG?raw=true" width = "200" height = "370" />  
+
+<img src="https://github.com/Im-Tae/Memorandum/blob/master/Prototype/Main_EditMemo2.PNG?raw=true" width = "200" height = "370" />  
+
+메모 생성, 확인, 삭제, 수정을 할 수 있는 메인화면입니다.
+>>>>>>> 448c9a0d7217ba551b2055687018291f17cd8bab
 
 <img src="https://github.com/Im-Tae/Memorandum/blob/master/Prototype/MainScreen.gif?raw=true" width = "300" height = "550" /> 
 
 </p>
 
+## 📑 Manual
+
+##### - 메모
+
+<strong>더블클릭</strong> - 메모를 확인, 수정 할 수 있는 화면을 띄어줍니다.
+
+<strong>오른쪽에서 왼쪽으로 밀기</strong> - 메모를 지울수 있는 버튼을 보여줍니다.
+
+##### - 메뉴
+
+<img src="https://github.com/Im-Tae/Memorandum/blob/master/Prototype/icon/add.png?raw=true" width = "30" height = "30" /></br> 메모를 추가 버튼입니다.
+
+<img src="https://github.com/Im-Tae/Memorandum/blob/master/Prototype/icon/logout.png?raw=true" width = "30" height = "30" /></br> 로그아웃 버튼입니다.
+
+<img src="https://github.com/Im-Tae/Memorandum/blob/master/Prototype/icon/edit.png?raw=true" width = "30" height = "30" /></br> 메모 편집 버튼입니다.
+
+<img src="https://github.com/Im-Tae/Memorandum/blob/master/Prototype/icon/check.png?raw=true" width = "30" height = "30" /></br> 확인 버튼입니다.
 
 
 ##  📂 Library
@@ -73,4 +100,3 @@ Moblie, PC interlocking notepad project
 [Firebase]( https://firebase.google.com/docs/android/setup )
 
 [Anko]( https://github.com/Kotlin/anko ) -  Now deprecated.
-
