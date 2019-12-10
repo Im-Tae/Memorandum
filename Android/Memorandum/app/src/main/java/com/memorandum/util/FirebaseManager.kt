@@ -20,6 +20,7 @@ class FirebaseManager {
                 if (it.isSuccessful) {
                     ToastMessage.toastMessage(context, "회원가입 완료", "success")
                     user = auth.currentUser
+                    SharedPreferenceManager.setUserId(context, email)
                     intent = Intent(context, MainActivity::class.java)
                     context.startActivity(intent)
                 } else {

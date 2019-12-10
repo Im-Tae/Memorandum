@@ -38,17 +38,17 @@ class MainActivity : AppCompatActivity() {
     private fun getMemo() {
         FirebaseFirestore.getInstance().collection(SharedPreferenceManager.getUserId(this).toString()).addSnapshotListener { querySnapshot, firebaseFirestoreException ->
 
-            memoList.clear()
-            if (querySnapshot != null) {
-                for(item in querySnapshot.documents){
-                    var userDTO = item.toObject(Memo::class.java)
-                    memoList.add(userDTO!!)
+                memoList.clear()
+                if (querySnapshot != null) {
+                    for (item in querySnapshot.documents) {
+                        var userDTO = item.toObject(Memo::class.java)
+                        memoList.add(userDTO!!)
+                    }
                 }
+                recyclerView.adapter?.notifyDataSetChanged()
+                val memoAdapter = MemoAdapter(this, memoList)
+                recyclerView.adapter = memoAdapter
             }
-            recyclerView.adapter?.notifyDataSetChanged()
-            val memoAdapter = MemoAdapter(this, memoList)
-            recyclerView.adapter = memoAdapter
-        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
