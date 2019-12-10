@@ -11,10 +11,10 @@
 
     <style name="MemoTheme" parent="Theme.AppCompat.Light.DarkActionBar">
     <!-- Customize your theme here. -->
-    <item name="colorPrimary">#262626</item>
-    <item name="colorPrimaryDark">#D1D1D1</item>
-    <item name="colorAccent">#D1D1D1</item>
-    <item name="android:windowActionBarOverlay">true</item>
+        <item name="colorPrimary">#262626</item>
+        <item name="colorPrimaryDark">#D1D1D1</item>
+        <item name="colorAccent">#D1D1D1</item>
+        <item name="android:windowActionBarOverlay">true</item>
 </style>
 
     <style name="ShowMemoTheme" parent="Theme.AppCompat.Light.DarkActionBar">

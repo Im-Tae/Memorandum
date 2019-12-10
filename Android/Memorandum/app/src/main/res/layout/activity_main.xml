@@ -4,9 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".view.MainActivity"
+    android:id="@+id/main_content"
     android:background="#2E2E2E">
 
+    <com.baoyz.widget.PullRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:refreshType="ring">
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
@@ -23,4 +29,6 @@
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:spanCount="2"
         />
+
+    </com.baoyz.widget.PullRefreshLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

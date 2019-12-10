@@ -1,4 +1,4 @@
-package com.memorandum
+package com.memorandum.view
 
 import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
@@ -6,20 +6,17 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.WindowManager
+import com.google.firebase.firestore.FirebaseFirestore
+import com.memorandum.R
 import com.memorandum.util.FirebaseManager
+import com.memorandum.util.SharedPreferenceManager
 import com.memorandum.util.ToastMessage
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
 
 class MainActivity : AppCompatActivity() {
 
-    var memoList = arrayListOf<Memo>(
-        Memo("테스트", "테스트입니다."),
-        Memo("테스트", "테스트입니다."),
-        Memo("테스트", "테스트입니다."),
-        Memo("테스트", "테스트입니다.")
-
-    )
+    var memoList = arrayListOf<Memo>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,9 +27,28 @@ class MainActivity : AppCompatActivity() {
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_main)
 
-        val memoAdapter = MemoAdapter(this, memoList)
-        recyclerView.adapter = memoAdapter
+        getMemo()
 
+        swipeRefreshLayout.setOnRefreshListener {
+            swipeRefreshLayout.postDelayed( Runnable { swipeRefreshLayout.setRefreshing(false) }, 1000)
+            getMemo()
+        }
+    }
+
+    private fun getMemo() {
+        FirebaseFirestore.getInstance().collection(SharedPreferenceManager.getUserId(this).toString()).addSnapshotListener { querySnapshot, firebaseFirestoreException ->
+
+            memoList.clear()
+            if (querySnapshot != null) {
+                for(item in querySnapshot.documents){
+                    var userDTO = item.toObject(Memo::class.java)
+                    memoList.add(userDTO!!)
+                }
+            }
+            recyclerView.adapter?.notifyDataSetChanged()
+            val memoAdapter = MemoAdapter(this, memoList)
+            recyclerView.adapter = memoAdapter
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

@@ -12,7 +12,10 @@
         android:theme="@style/MainTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:icon">
-        <activity android:name=".WriteMemoActivity" android:theme="@style/ShowMemoTheme" ></activity>
+        <activity android:name=".view.ShowAndEditMemoActivity" android:theme="@style/ShowMemoTheme"/>
+        <activity
+            android:name=".view.WriteMemoActivity"
+            android:theme="@style/ShowMemoTheme" />
         <activity android:name=".user.PasswordResetActivity" />
         <activity android:name=".user.RegisterActivity" />
         <activity android:name=".user.LoginSelectActivity" />
@@ -25,8 +28,8 @@
         </activity>
         <activity android:name=".user.LoginActivity" />
         <activity
-            android:name=".MainActivity"
-            android:theme="@style/MemoTheme"></activity>
+            android:name=".view.MainActivity"
+            android:theme="@style/MemoTheme" />
     </application>
 
 </manifest>

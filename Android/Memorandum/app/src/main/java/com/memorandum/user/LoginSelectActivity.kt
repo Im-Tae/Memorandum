@@ -11,7 +11,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-import com.memorandum.MainActivity
+import com.memorandum.view.MainActivity
 import com.memorandum.R
 import com.memorandum.util.*
 import kotlinx.android.synthetic.main.activity_login_select.*
@@ -65,7 +65,7 @@ class LoginSelectActivity : AppCompatActivity() {
                 val credential = GoogleAuthProvider.getCredential(account?.idToken, null)
                 FirebaseAuth.getInstance().signInWithCredential(credential)
                 if (GetNetworkInfo.networkInfo(this)) {
-                    SharedPreferenceManager.setUserId(this, credential.toString())
+                    SharedPreferenceManager.setUserId(this, account?.email.toString())
                     startActivity<MainActivity>()
                     ToastMessage.toastMessage(this, "로그인 완료", "success")
                 } else {

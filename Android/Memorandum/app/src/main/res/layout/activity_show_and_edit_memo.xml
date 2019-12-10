@@ -19,19 +19,21 @@
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:background="@drawable/memo_title"
-            android:id="@+id/writeMemoTitle"
+            android:id="@+id/showMemoTitle"
             android:textSize="25dp"
             android:textStyle="bold"
             android:fontFamily="@font/courgette"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
-            android:hint="Title"/>
+            android:hint="Title"
+            android:enabled="false"/>
 
         <EditText
-            android:id="@+id/writeMemoContent"
+            android:id="@+id/showMemoContent"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/memo"
+            android:enabled="false"
             android:fontFamily="@font/courgette"
             android:gravity="start"
             android:paddingStart="20dp"

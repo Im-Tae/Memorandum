@@ -5,7 +5,7 @@ import android.content.Intent
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.memorandum.MainActivity
+import com.memorandum.view.MainActivity
 import com.memorandum.user.LoginSelectActivity
 
 class FirebaseManager {
@@ -33,7 +33,7 @@ class FirebaseManager {
                     if (it.isSuccessful) {
                         ToastMessage.toastMessage(context, "로그인 완료", "success")
                         user = auth.currentUser
-                        SharedPreferenceManager.setUserId(context, auth.currentUser.toString())
+                        SharedPreferenceManager.setUserId(context, email)
                         intent = Intent(context, MainActivity::class.java)
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         context.startActivity(intent)

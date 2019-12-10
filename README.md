@@ -8,9 +8,9 @@ Moblie, PC interlocking notepad project
 
 ##  👨‍👧‍👦  Contributors
 
-🔗  [TaeGeon Lim]( https://github.com/Im-Tae )
+🔗  [TaeGeon Lim]( https://github.com/Im-Tae ) - Plan, Android, Design
 
-🔗  [EunSang Gwak]( https://github.com/ges020 )
+🔗  [EunSang Gwak]( https://github.com/ges020 ) - PC, Design
 
 
 
@@ -19,9 +19,9 @@ Moblie, PC interlocking notepad project
 ##### - Login
 
 <p float="left">
-  
+
 <img src="https://github.com/Im-Tae/Memorandum/blob/master/Prototype/LoginSelectScreen.PNG?raw=true" width = "200" height = "370"  />  
-  
+
 <img src="https://github.com/Im-Tae/Memorandum/blob/master/Prototype/LoginScreen.PNG?raw=true" width = "200" height = "370" />  
 
 <img src="https://github.com/Im-Tae/Memorandum/blob/master/Prototype/RegisterScreen.PNG" width = "200" height = "370" />  
@@ -45,6 +45,8 @@ Moblie, PC interlocking notepad project
 [Sweet Alert Dialog]( https://github.com/pedant/sweet-alert-dialog )
 
 [AndroidSwipeLayout]( https://github.com/daimajia/AndroidSwipeLayout )
+
+[PullRefreshLayout]( https://github.com/baoyongzhang/android-PullRefreshLayout )
 
 [RecyclerView]( https://developer.android.com/reference/android/support/v7/widget/RecyclerView )
 
