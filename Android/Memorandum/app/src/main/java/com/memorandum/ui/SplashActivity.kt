@@ -1,13 +1,11 @@
-package com.memorandum.splashscreen
+package com.memorandum.ui
 
 import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
 import android.view.animation.AnimationUtils
-import com.memorandum.view.MainActivity
 import com.memorandum.R
-import com.memorandum.user.LoginSelectActivity
 import com.memorandum.util.SharedPreferenceManager
 import kotlinx.android.synthetic.main.activity_splash.*
 import org.jetbrains.anko.startActivity

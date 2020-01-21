@@ -1,4 +1,4 @@
-package com.memorandum.view
+package com.memorandum.adapter
 
 import android.content.Context
 import android.content.Intent
@@ -11,8 +11,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.daimajia.swipe.SwipeLayout
 import com.google.firebase.firestore.FirebaseFirestore
 import com.memorandum.R
+import com.memorandum.ui.ShowAndEditMemoActivity
 import com.memorandum.util.DataSingleton
 import com.memorandum.util.SharedPreferenceManager
+import com.memorandum.model.Memo
 
 class MemoAdapter(private val context: Context, private val memoList: ArrayList<Memo>) : RecyclerView.Adapter<MemoAdapter.ViewHolder>() {
 

@@ -1,4 +1,4 @@
-package com.memorandum.view
+package com.memorandum.ui
 
 import  android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +10,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.memorandum.R
 import com.memorandum.util.DataSingleton
 import com.memorandum.util.SharedPreferenceManager
+import com.memorandum.model.Memo
 import kotlinx.android.synthetic.main.activity_show_and_edit_memo.*
 
 class ShowAndEditMemoActivity : AppCompatActivity() {

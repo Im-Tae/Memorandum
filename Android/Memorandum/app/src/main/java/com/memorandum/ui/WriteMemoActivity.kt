@@ -1,4 +1,4 @@
-package com.memorandum.view
+package com.memorandum.ui
 
 import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +9,7 @@ import android.view.WindowManager
 import com.google.firebase.firestore.FirebaseFirestore
 import com.memorandum.R
 import com.memorandum.util.SharedPreferenceManager
+import com.memorandum.model.Memo
 import kotlinx.android.synthetic.main.activity_write_memo.*
 
 class WriteMemoActivity : AppCompatActivity() {

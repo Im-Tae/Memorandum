@@ -1,4 +1,4 @@
-package com.memorandum.user
+package com.memorandum.ui
 
 import android.content.Intent
 import android.content.pm.ActivityInfo
@@ -11,7 +11,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-import com.memorandum.view.MainActivity
 import com.memorandum.R
 import com.memorandum.util.*
 import kotlinx.android.synthetic.main.activity_login_select.*

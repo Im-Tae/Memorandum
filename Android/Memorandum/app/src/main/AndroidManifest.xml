@@ -12,23 +12,23 @@
         android:theme="@style/MainTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:icon">
-        <activity android:name=".view.ShowAndEditMemoActivity" android:theme="@style/ShowMemoTheme"/>
+        <activity android:name=".ui.ShowAndEditMemoActivity" android:theme="@style/ShowMemoTheme"/>
         <activity
-            android:name=".view.WriteMemoActivity"
+            android:name=".ui.WriteMemoActivity"
             android:theme="@style/ShowMemoTheme" />
-        <activity android:name=".user.PasswordResetActivity" />
-        <activity android:name=".user.RegisterActivity" />
-        <activity android:name=".user.LoginSelectActivity" />
-        <activity android:name=".splashscreen.SplashActivity">
+        <activity android:name=".ui.PasswordResetActivity" />
+        <activity android:name=".ui.RegisterActivity" />
+        <activity android:name=".ui.LoginSelectActivity" />
+        <activity android:name=".ui.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".user.LoginActivity" />
+        <activity android:name=".ui.LoginActivity" />
         <activity
-            android:name=".view.MainActivity"
+            android:name=".ui.MainActivity"
             android:theme="@style/MemoTheme" />
     </application>
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.WriteMemoActivity"
+    tools:context=".ui.WriteMemoActivity"
     android:background="#2E2E2E"
 
     app:layout_behavior="100dp"

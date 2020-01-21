@@ -1,4 +1,4 @@
-package com.memorandum.view
+package com.memorandum.ui
 
 import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
@@ -6,17 +6,19 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.WindowManager
-import com.google.firebase.firestore.FirebaseFirestore
 import com.memorandum.R
+import com.memorandum.contract.MainContract
+import com.memorandum.presenter.MainPresenter
 import com.memorandum.util.FirebaseManager
-import com.memorandum.util.SharedPreferenceManager
 import com.memorandum.util.ToastMessage
+import com.memorandum.model.Memo
+import com.memorandum.adapter.MemoAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), MainContract.View {
 
-    var memoList = arrayListOf<Memo>()
+    override lateinit var presenter : MainContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,28 +29,20 @@ class MainActivity : AppCompatActivity() {
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_main)
 
-        getMemo()
+        presenter = MainPresenter(this)
+
+        presenter.getMemo(this)
 
         swipeRefreshLayout.setOnRefreshListener {
             swipeRefreshLayout.postDelayed( Runnable { swipeRefreshLayout.setRefreshing(false) }, 1000)
-            getMemo()
+            presenter.getMemo(this)
         }
     }
 
-    private fun getMemo() {
-        FirebaseFirestore.getInstance().collection(SharedPreferenceManager.getUserId(this).toString()).addSnapshotListener { querySnapshot, firebaseFirestoreException ->
-
-                memoList.clear()
-                if (querySnapshot != null) {
-                    for (item in querySnapshot.documents) {
-                        var userDTO = item.toObject(Memo::class.java)
-                        memoList.add(userDTO!!)
-                    }
-                }
-                recyclerView.adapter?.notifyDataSetChanged()
-                val memoAdapter = MemoAdapter(this, memoList)
-                recyclerView.adapter = memoAdapter
-            }
+    override fun setMemo(memoList: ArrayList<Memo>) {
+        recyclerView.adapter?.notifyDataSetChanged()
+        val memoAdapter = MemoAdapter(this, memoList)
+        recyclerView.adapter = memoAdapter
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

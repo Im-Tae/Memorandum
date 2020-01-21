@@ -1,4 +1,4 @@
-package com.memorandum.user
+package com.memorandum.ui
 
 import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
@@ -6,11 +6,15 @@ import android.os.Bundle
 import android.view.WindowManager
 import com.memorandum.util.FirebaseManager.Companion.loginUser
 import com.memorandum.R
+import com.memorandum.contract.LoginContract
+import com.memorandum.presenter.LoginPresenter
 import com.memorandum.util.*
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.startActivity
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity(), LoginContract.View {
+
+    override lateinit var presenter: LoginContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,24 +27,18 @@ class LoginActivity : AppCompatActivity() {
 
         Animation.appearAnimation(this, login_email, login_password, loginButton, changePasswordResetButton)
 
-        loginButton.setOnClickListener {
+        presenter = LoginPresenter(this)
 
-            HideKeyboard.hideKeyboard(this.currentFocus, this)
+        loginButton.setOnClickListener { presenter.login(this, login_email.text.toString().trim(), login_password.text.toString().trim(), login_email, login_password) }
 
-            if (GetNetworkInfo.networkInfo(this)) {
-                if (CheckValid.checkValid(this, login_email.text.toString().trim(), login_password.text.toString().trim() , login_email, login_password)) {
-                    loginUser(applicationContext, login_email.text.toString().trim(), login_password.text.toString().trim())
-                }
-            } else {
-                ToastMessage.toastMessage(this, "와이파이 연결을 확인해주세요.", "error")
-            }
-        }
-
-        changePasswordResetButton.setOnClickListener {
-            startActivity<PasswordResetActivity>()
-        }
-
+        changePasswordResetButton.setOnClickListener { startPasswordResetActivity() }
     }
+
+    override fun hideKeyboard() = HideKeyboard.hideKeyboard(this.currentFocus, this)
+
+    override fun startPasswordResetActivity() =  startActivity<PasswordResetActivity>()
+
+    override fun showToast() = ToastMessage.toastMessage(this, "와이파이 연결을 확인해주세요.", "error")
 
     override fun onBackPressed() {
         super.onBackPressed()

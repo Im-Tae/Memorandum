@@ -5,8 +5,8 @@ import android.content.Intent
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.memorandum.view.MainActivity
-import com.memorandum.user.LoginSelectActivity
+import com.memorandum.ui.MainActivity
+import com.memorandum.ui.LoginSelectActivity
 
 class FirebaseManager {
     companion object {

@@ -1,4 +1,4 @@
-package com.memorandum.user
+package com.memorandum.ui
 
 import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
@@ -6,9 +6,9 @@ import android.os.Bundle
 import android.view.WindowManager
 import com.memorandum.R
 import com.memorandum.util.*
-import kotlinx.android.synthetic.main.activity_password_reset.*
+import kotlinx.android.synthetic.main.activity_register.*
 
-class PasswordResetActivity : AppCompatActivity() {
+class RegisterActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,17 +17,17 @@ class PasswordResetActivity : AppCompatActivity() {
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
-        setContentView(R.layout.activity_password_reset)
+        setContentView(R.layout.activity_register)
 
-        Animation.appearAnimation(this, reset_email, resetButton)
+        Animation.appearAnimation(this, register_email, register_password, registerButton)
 
-        resetButton.setOnClickListener {
+        registerButton.setOnClickListener {
 
             HideKeyboard.hideKeyboard(this.currentFocus, this)
 
             if (GetNetworkInfo.networkInfo(this)) {
-                if (CheckValid.checkValid(this, reset_email.text.toString().trim(), reset_email)) {
-                    FirebaseManager.resetPassword(this, reset_email.text.toString().trim())
+                if (CheckValid.checkValid(this, register_email.text.toString().trim(), register_password.text.toString().trim(), register_email, register_password)) {
+                    FirebaseManager.registerUser(this, register_email.text.toString().trim(), register_password.text.toString().trim())
                 }
             } else {
                 ToastMessage.toastMessage(this, "와이파이 연결을 확인해주세요.", "error")
