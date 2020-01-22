@@ -12,15 +12,16 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.memorandum.R
+import com.memorandum.contract.LoginSelectContract
+import com.memorandum.presenter.LoginSelectPresenter
 import com.memorandum.util.*
 import kotlinx.android.synthetic.main.activity_login_select.*
 import org.jetbrains.anko.startActivity
 
-class LoginSelectActivity : AppCompatActivity() {
+class LoginSelectActivity : AppCompatActivity(), LoginSelectContract.View {
 
-    lateinit var auth : FirebaseAuth
-    lateinit var authListener : FirebaseAuth.AuthStateListener
-    lateinit var googleSigneInClient : GoogleSignInClient
+    override lateinit var presenter: LoginSelectContract.Presenter
+    private lateinit var googleSignedInClient : GoogleSignInClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,9 +31,11 @@ class LoginSelectActivity : AppCompatActivity() {
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_login_select)
 
-        val googleSignInOptions=GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestIdToken(getString(R.string.default_web_client_id)).requestEmail().build()
+        presenter = LoginSelectPresenter(this)
 
-        googleSigneInClient = GoogleSignIn.getClient(this,googleSignInOptions)
+        val googleSignInOptions= GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestIdToken(getString(R.string.default_web_client_id)).requestEmail().build()
+
+        googleSignedInClient = GoogleSignIn.getClient(this,googleSignInOptions)
 
         Animation.appearAnimation(this, changeLoginButton, changeRegisterButton, goolgeLoginButton, text)
 
@@ -50,9 +53,13 @@ class LoginSelectActivity : AppCompatActivity() {
     }
 
     private fun googleSignIn(){
-        val signInIntent = googleSigneInClient.signInIntent
+        val signInIntent = googleSignedInClient.signInIntent
         startActivityForResult(signInIntent,100)
     }
+
+    override fun startLoginActivity() = startActivity(Intent(this, LoginActivity::class.java))
+
+    override fun startRegisterActivity() = startActivity(Intent(this, RegisterActivity::class.java))
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)

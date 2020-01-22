@@ -1,5 +1,6 @@
 package com.memorandum.ui
 
+import android.content.Intent
 import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -36,7 +37,7 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
 
     override fun hideKeyboard() = HideKeyboard.hideKeyboard(this.currentFocus, this)
 
-    override fun startPasswordResetActivity() =  startActivity<PasswordResetActivity>()
+    override fun startPasswordResetActivity() =  startActivity(Intent(this, PasswordResetActivity::class.java))
 
     override fun showToast() = ToastMessage.toastMessage(this, "와이파이 연결을 확인해주세요.", "error")
 
