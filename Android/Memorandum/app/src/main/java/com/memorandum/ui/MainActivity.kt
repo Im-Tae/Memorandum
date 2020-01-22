@@ -4,21 +4,16 @@ import android.content.Intent
 import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.WindowManager
-import com.google.firestore.v1.Write
 import com.memorandum.R
 import com.memorandum.contract.MainContract
 import com.memorandum.presenter.MainPresenter
-import com.memorandum.util.FirebaseManager
 import com.memorandum.util.ToastMessage
 import com.memorandum.model.Memo
 import com.memorandum.adapter.MemoAdapter
-import com.memorandum.model.Activities
 import kotlinx.android.synthetic.main.activity_main.*
-import org.jetbrains.anko.startActivity
 
 class MainActivity : AppCompatActivity(), MainContract.View {
 
@@ -49,7 +44,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         recyclerView.adapter = memoAdapter
     }
 
-    override fun startWriteMemoActivity() = startActivity(Intent(this, WriteMemoActivity::class.java))
+    override fun startActivity(target: Class<*>) = startActivity(Intent(this, target))
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.add, menu)
@@ -60,7 +55,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
 
         when(item?.itemId) {
-            R.id.action_addMemo -> presenter.startActivity(Activities.WriteMemoActivity)
+            R.id.action_addMemo -> presenter.changeActivity(WriteMemoActivity::class.java)
 
             R.id.action_logout -> presenter.logout(this)
         }

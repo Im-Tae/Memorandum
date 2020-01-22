@@ -1,13 +1,10 @@
 package com.memorandum.presenter
 
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
 import com.memorandum.contract.MainContract
-import com.memorandum.model.Activities
 import com.memorandum.util.SharedPreferenceManager
 import com.memorandum.model.Memo
-import com.memorandum.ui.WriteMemoActivity
 import com.memorandum.util.FirebaseManager
 
 class MainPresenter(override val view: MainContract.View) : MainContract.Presenter {
@@ -28,9 +25,7 @@ class MainPresenter(override val view: MainContract.View) : MainContract.Present
         view.setMemo(memoList)
     }
 
-    override fun startActivity(activityName: Activities) {
-        when (activityName) { Activities.WriteMemoActivity -> view.startWriteMemoActivity() }
-    }
+    override fun changeActivity(target: Class<*>) = view.startActivity(target)
 
     override fun logout(context: Context) = FirebaseManager.logout(context)
 }

@@ -1,8 +1,6 @@
 package com.memorandum.contract
 
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
-import com.memorandum.model.Activities
 import com.memorandum.model.Memo
 
 class MainContract {
@@ -10,7 +8,7 @@ class MainContract {
         val presenter: Presenter
 
         fun setMemo(memoList: ArrayList<Memo>)
-        fun startWriteMemoActivity()
+        fun startActivity(target: Class<*>)
     }
 
     interface Presenter {
@@ -19,6 +17,6 @@ class MainContract {
 
         fun getMemo(context: Context)
         fun logout(context: Context)
-        fun startActivity(activityName: Activities)
+        fun changeActivity(target: Class<*>)
     }
 }
