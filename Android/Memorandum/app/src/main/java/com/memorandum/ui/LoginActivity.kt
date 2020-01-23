@@ -32,12 +32,12 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
 
         loginButton.setOnClickListener { presenter.login(this, login_email.text.toString().trim(), login_password.text.toString().trim(), login_email, login_password) }
 
-        changePasswordResetButton.setOnClickListener { startPasswordResetActivity() }
+        changePasswordResetButton.setOnClickListener { presenter.changeActivity(PasswordResetActivity::class.java) }
     }
 
     override fun hideKeyboard() = HideKeyboard.hideKeyboard(this.currentFocus, this)
 
-    override fun startPasswordResetActivity() =  startActivity(Intent(this, PasswordResetActivity::class.java))
+    override fun startActivity(target: Class<*>) =  startActivity(Intent(this, target))
 
     override fun showToast() = ToastMessage.toastMessage(this, "와이파이 연결을 확인해주세요.", "error")
 

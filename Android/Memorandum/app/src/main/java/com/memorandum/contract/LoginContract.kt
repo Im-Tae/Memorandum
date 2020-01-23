@@ -6,9 +6,9 @@ class LoginContract {
     interface View {
         val presenter: Presenter
 
-        fun startPasswordResetActivity()
         fun hideKeyboard()
         fun showToast()
+        fun startActivity(target: Class<*>)
 
     }
 
@@ -16,6 +16,7 @@ class LoginContract {
         val view: View
 
         fun login(context: Context, login_email: String, login_password: String, login_email_view: android.view.View, login_password_view : android.view.View)
+        fun changeActivity(target: Class<*>)
 
     }
 }

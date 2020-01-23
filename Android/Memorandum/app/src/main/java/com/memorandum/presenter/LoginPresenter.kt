@@ -20,4 +20,6 @@ class LoginPresenter(override val view: LoginContract.View) : LoginContract.Pres
         } else view.showToast()
     }
 
+    override fun changeActivity(target: Class<*>) = view.startActivity(target)
+
 }
