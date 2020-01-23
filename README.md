@@ -1,6 +1,6 @@
 ##  📋 Memorandum
 
-[![Author](https://img.shields.io/badge/author-Im--Tae-red.svg)]( https://github.com/Im-Tae ) [![Language](https://img.shields.io/badge/language-Kotlin%2C%20C%23-green)]() [![Visual Studio](https://img.shields.io/badge/tools-Android%20Studio,%20Visual%20Studio%2C%20Firebase-green.svg)]() [![MIT License](https://img.shields.io/badge/license-Apache%20License%202.0-blue)]( https://opensource.org/licenses/MIT )
+[![Author](https://img.shields.io/badge/author-Im--Tae-red.svg)]( https://github.com/Im-Tae ) [![Language](https://img.shields.io/badge/language-Kotlin%2C%20C%23-green)]() [![Visual Studio](https://img.shields.io/badge/tools-Android%20Studio,%20Visual%20Studio%2C%20Firebase-green.svg)]() [![MIT License](https://img.shields.io/badge/license-Apache%20License%202.0-blue)]( https://www.apache.org/licenses/LICENSE-2.0 )
 
 Moblie, PC interlocking notepad project
 
