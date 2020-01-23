@@ -5,10 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
 import com.memorandum.R
+import com.memorandum.contract.PasswordResetContract
+import com.memorandum.presenter.PasswordResetPresenter
 import com.memorandum.util.*
 import kotlinx.android.synthetic.main.activity_password_reset.*
 
-class PasswordResetActivity : AppCompatActivity() {
+class PasswordResetActivity : AppCompatActivity(), PasswordResetContract.View {
+
+    override lateinit var presenter: PasswordResetContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,6 +24,8 @@ class PasswordResetActivity : AppCompatActivity() {
         setContentView(R.layout.activity_password_reset)
 
         Animation.appearAnimation(this, reset_email, resetButton)
+
+        presenter = PasswordResetPresenter(this)
 
         resetButton.setOnClickListener {
 
