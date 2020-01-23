@@ -7,7 +7,7 @@ class LoginContract {
         val presenter: Presenter
 
         fun hideKeyboard()
-        fun showToast()
+        fun showToast(message: String, type: String)
         fun startActivity(target: Class<*>)
 
     }

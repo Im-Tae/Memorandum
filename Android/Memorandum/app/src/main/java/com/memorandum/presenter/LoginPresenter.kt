@@ -17,7 +17,7 @@ class LoginPresenter(override val view: LoginContract.View) : LoginContract.Pres
             if (CheckValid.checkValid(context, login_email, login_password, login_email_view, login_password_view))
                 FirebaseManager.loginUser(context, login_email, login_password )
 
-        } else view.showToast()
+        } else view.showToast("와이파이 연결을 확인해주세요.", "error")
     }
 
     override fun changeActivity(target: Class<*>) = view.startActivity(target)

@@ -5,13 +5,11 @@ import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
-import com.memorandum.util.FirebaseManager.Companion.loginUser
 import com.memorandum.R
 import com.memorandum.contract.LoginContract
 import com.memorandum.presenter.LoginPresenter
 import com.memorandum.util.*
 import kotlinx.android.synthetic.main.activity_login.*
-import org.jetbrains.anko.startActivity
 
 class LoginActivity : AppCompatActivity(), LoginContract.View {
 
@@ -39,7 +37,7 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
 
     override fun startActivity(target: Class<*>) =  startActivity(Intent(this, target))
 
-    override fun showToast() = ToastMessage.toastMessage(this, "와이파이 연결을 확인해주세요.", "error")
+    override fun showToast(message: String, type: String) = ToastMessage.toastMessage(this, message, type)
 
     override fun onBackPressed() {
         super.onBackPressed()
