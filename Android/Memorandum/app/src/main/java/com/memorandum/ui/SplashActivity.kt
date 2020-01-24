@@ -1,5 +1,6 @@
 package com.memorandum.ui
 
+import android.content.Intent
 import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,7 +9,6 @@ import android.view.animation.AnimationUtils
 import com.memorandum.R
 import com.memorandum.util.SharedPreferenceManager
 import kotlinx.android.synthetic.main.activity_splash.*
-import org.jetbrains.anko.startActivity
 
 class SplashActivity : AppCompatActivity() {
 
@@ -18,8 +18,8 @@ class SplashActivity : AppCompatActivity() {
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_splash)
 
-        var textAnimation = AnimationUtils.loadAnimation(this, R.anim.text)
-        var layoutAnimation = AnimationUtils.loadAnimation(this, R.anim.background)
+        val textAnimation = AnimationUtils.loadAnimation(this, R.anim.text)
+        val layoutAnimation = AnimationUtils.loadAnimation(this, R.anim.background)
 
         val splashScreen = object : Thread() {
             override fun run() {
@@ -29,9 +29,9 @@ class SplashActivity : AppCompatActivity() {
 
                 sleep(3000)
                 if (SharedPreferenceManager.getUserId(applicationContext) != "") {
-                    startActivity<MainActivity>()
+                    startActivity(Intent(applicationContext, MainActivity::class.java))
                 } else {
-                    startActivity<LoginSelectActivity>()
+                    startActivity(Intent(applicationContext, LoginSelectActivity::class.java))
                 }
                 finish()
             }

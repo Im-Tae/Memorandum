@@ -14,8 +14,8 @@ import kotlinx.android.synthetic.main.activity_write_memo.*
 
 class WriteMemoActivity : AppCompatActivity() {
 
-    var firestore: FirebaseFirestore? = null
-    var memoList = arrayListOf<Memo>()
+    private var fireStore: FirebaseFirestore? = null
+    private var memoList = arrayListOf<Memo>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +29,7 @@ class WriteMemoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_write_memo)
 
         title = ""
-        firestore = FirebaseFirestore.getInstance()
+        fireStore = FirebaseFirestore.getInstance()
 
     }
 
@@ -43,7 +43,7 @@ class WriteMemoActivity : AppCompatActivity() {
         when(item?.itemId) {
             R.id.action_save -> {
                 if (writeMemoContent.text.toString() != "" && checkMemo(writeMemoTitle.text.toString() + writeMemoContent.text.toString())) {
-                    AddMemo()
+                    addMemo()
                 }
                 finish()
                 overridePendingTransition(
@@ -56,12 +56,12 @@ class WriteMemoActivity : AppCompatActivity() {
         return true
     }
 
-    private fun AddMemo() {
+    private fun addMemo() {
         val memo = Memo(
             writeMemoTitle.text.toString(),
             writeMemoContent.text.toString()
         )
-        firestore?.collection(SharedPreferenceManager.getUserId(this).toString())?.document(writeMemoTitle.text.toString() + writeMemoContent.text.toString())?.set(memo)
+        fireStore?.collection(SharedPreferenceManager.getUserId(this).toString())?.document(writeMemoTitle.text.toString() + writeMemoContent.text.toString())?.set(memo)
     }
 
     private fun checkMemo(memo: String): Boolean {
