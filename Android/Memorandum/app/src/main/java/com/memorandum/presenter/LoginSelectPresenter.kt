@@ -30,9 +30,8 @@ class LoginSelectPresenter(override val view: LoginSelectContract.View) : LoginS
                     SharedPreferenceManager.setUserId(context, account?.email.toString())
                     view.startActivity(MainActivity::class.java)
                     view.showToast("로그인 완료", "success")
-                } else {
-                    view.showToast("와이파이 연결을 확인해주세요.", "error")
-                }
+
+                } else view.showToast("와이파이 연결을 확인해주세요.", "error")
             }
         }
     }

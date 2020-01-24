@@ -27,19 +27,13 @@ class PasswordResetActivity : AppCompatActivity(), PasswordResetContract.View {
 
         presenter = PasswordResetPresenter(this)
 
-        resetButton.setOnClickListener {
-
-            HideKeyboard.hideKeyboard(this.currentFocus, this)
-
-            if (GetNetworkInfo.networkInfo(this)) {
-                if (CheckValid.checkValid(this, reset_email.text.toString().trim(), reset_email)) {
-                    FirebaseManager.resetPassword(this, reset_email.text.toString().trim())
-                }
-            } else {
-                ToastMessage.toastMessage(this, "와이파이 연결을 확인해주세요.", "error")
-            }
-        }
+        resetButton.setOnClickListener { presenter.resetPassword(this, reset_email.text.toString().trim(), reset_email) }
     }
+
+    override fun hideKeyboard() = HideKeyboard.hideKeyboard(this.currentFocus, this)
+
+    override fun showToast(message: String, type: String) = ToastMessage.toastMessage(this, message, type)
+
 
     override fun onBackPressed() {
         super.onBackPressed()
