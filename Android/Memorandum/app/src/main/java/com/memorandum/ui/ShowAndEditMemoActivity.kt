@@ -8,30 +8,31 @@ import android.view.MenuItem
 import android.view.WindowManager
 import com.google.firebase.firestore.FirebaseFirestore
 import com.memorandum.R
+import com.memorandum.contract.ShowAndEditMemoContract
 import com.memorandum.util.DataSingleton
 import com.memorandum.util.SharedPreferenceManager
 import com.memorandum.model.Memo
+import com.memorandum.presenter.ShowAndEditMemoPresenter
 import kotlinx.android.synthetic.main.activity_show_and_edit_memo.*
 
-class ShowAndEditMemoActivity : AppCompatActivity() {
+class ShowAndEditMemoActivity : AppCompatActivity(), ShowAndEditMemoContract.View {
 
-    var firestore: FirebaseFirestore? = null
-    var memoList = arrayListOf<Memo>()
+    private var fireStore: FirebaseFirestore? = null
+    override lateinit var presenter: ShowAndEditMemoContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        overridePendingTransition(
-            R.anim.slide_up,
-            R.anim.slide_up
-        )
+        overridePendingTransition(R.anim.slide_up, R.anim.slide_up)
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_show_and_edit_memo)
 
+        presenter = ShowAndEditMemoPresenter(this)
+        
         title = ""
-        firestore = FirebaseFirestore.getInstance()
+        fireStore = FirebaseFirestore.getInstance()
 
         if (DataSingleton.getInstance()?.content != "") {
             showMemoTitle.setText(DataSingleton.getInstance()?.title)
@@ -71,14 +72,14 @@ class ShowAndEditMemoActivity : AppCompatActivity() {
 
     private fun UpdateMemo() {
 
-        firestore?.collection(SharedPreferenceManager.getUserId(this).toString())?.document(DataSingleton.getInstance()?.title + DataSingleton.getInstance()?.content)?.delete()?.addOnCompleteListener {
+        fireStore?.collection(SharedPreferenceManager.getUserId(this).toString())?.document(DataSingleton.getInstance()?.title + DataSingleton.getInstance()?.content)?.delete()?.addOnCompleteListener {
 
             val memo = Memo(
                 showMemoTitle.text.toString(),
                 showMemoContent.text.toString()
             )
 
-            firestore?.collection(SharedPreferenceManager.getUserId(this).toString())?.document(showMemoTitle.text.toString() + showMemoContent.text.toString())
+            fireStore?.collection(SharedPreferenceManager.getUserId(this).toString())?.document(showMemoTitle.text.toString() + showMemoContent.text.toString())
                 ?.set(memo)
         }
     }
