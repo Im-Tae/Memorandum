@@ -5,10 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
 import com.memorandum.R
+import com.memorandum.contract.RegisterContract
+import com.memorandum.presenter.RegisterPresenter
 import com.memorandum.util.*
 import kotlinx.android.synthetic.main.activity_register.*
 
-class RegisterActivity : AppCompatActivity() {
+class RegisterActivity : AppCompatActivity(), RegisterContract.View {
+
+    override lateinit var presenter: RegisterContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,19 +25,14 @@ class RegisterActivity : AppCompatActivity() {
 
         Animation.appearAnimation(this, register_email, register_password, registerButton)
 
-        registerButton.setOnClickListener {
+        presenter = RegisterPresenter(this)
 
-            HideKeyboard.hideKeyboard(this.currentFocus, this)
-
-            if (GetNetworkInfo.networkInfo(this)) {
-                if (CheckValid.checkValid(this, register_email.text.toString().trim(), register_password.text.toString().trim(), register_email, register_password)) {
-                    FirebaseManager.registerUser(this, register_email.text.toString().trim(), register_password.text.toString().trim())
-                }
-            } else {
-                ToastMessage.toastMessage(this, "와이파이 연결을 확인해주세요.", "error")
-            }
-        }
+        registerButton.setOnClickListener { presenter.register(this, register_email.text.toString().trim(), register_password.text.toString().trim(), register_email, register_password) }
     }
+
+    override fun hideKeyboard() = HideKeyboard.hideKeyboard(this.currentFocus, this)
+
+    override fun showToast(message: String, type: String) = ToastMessage.toastMessage(this, message, type)
 
     override fun onBackPressed() {
         super.onBackPressed()
