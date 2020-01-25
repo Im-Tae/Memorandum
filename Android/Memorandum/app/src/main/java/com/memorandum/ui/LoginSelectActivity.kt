@@ -1,20 +1,19 @@
 package com.memorandum.ui
 
+import android.content.Context
 import android.content.Intent
-import android.content.pm.ActivityInfo
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.WindowManager
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.memorandum.R
+import com.memorandum.base.BaseActivity
 import com.memorandum.contract.LoginSelectContract
 import com.memorandum.presenter.LoginSelectPresenter
 import com.memorandum.util.*
 import kotlinx.android.synthetic.main.activity_login_select.*
 
-class LoginSelectActivity : AppCompatActivity(), LoginSelectContract.View {
+class LoginSelectActivity : BaseActivity(), LoginSelectContract.View {
 
     override lateinit var presenter: LoginSelectContract.Presenter
     private lateinit var googleSignInClient : GoogleSignInClient
@@ -22,9 +21,6 @@ class LoginSelectActivity : AppCompatActivity(), LoginSelectContract.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         overridePendingTransition(R.anim.fade_none, R.anim.fade_none)
-        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_login_select)
 
         val googleSignInOptions= GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestIdToken(getString(R.string.default_web_client_id)).requestEmail().build()
@@ -48,7 +44,9 @@ class LoginSelectActivity : AppCompatActivity(), LoginSelectContract.View {
 
     override fun startActivity(target: Class<*>) = startActivity(Intent(this, target))
 
-    override fun showToast(message: String, type: String) = ToastMessage.toastMessage(this, message, type)
+    override fun showToast(context: Context, message: String, type: String) = ToastMessage.toastMessage(context, message, type)
+
+    override fun hideKeyboard() {}
 
     override fun onBackPressed() { finishAffinity() }
 

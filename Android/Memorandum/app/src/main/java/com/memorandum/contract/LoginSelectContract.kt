@@ -2,21 +2,17 @@ package com.memorandum.contract
 
 import android.content.Context
 import android.content.Intent
+import com.memorandum.base.BasePresenter
+import com.memorandum.base.BaseView
 
 class LoginSelectContract {
-    interface View {
-        val presenter: Presenter
+    interface View: BaseView<Presenter> {
 
-        fun showToast(message: String, type: String)
-        fun startActivity(target: Class<*>)
         fun startActivityForGoogleSignInResult(signInIntent: Intent)
-
     }
 
-    interface Presenter {
-        val view: View
+    interface Presenter: BasePresenter<View> {
 
-        fun changeActivity(target: Class<*>)
         fun googleLogin(context: Context, requestCode: Int, resultCode: Int, data: Intent?)
         fun googleSignIn(signInIntent : Intent)
     }

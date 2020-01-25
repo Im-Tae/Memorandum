@@ -1,31 +1,23 @@
 package com.memorandum.ui
 
 import android.content.Intent
-import android.content.pm.ActivityInfo
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.WindowManager
 import com.memorandum.R
 import com.memorandum.contract.MainContract
 import com.memorandum.presenter.MainPresenter
-import com.memorandum.util.ToastMessage
 import com.memorandum.model.Memo
 import com.memorandum.adapter.MemoAdapter
+import com.memorandum.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), MainContract.View {
+class MainActivity : BaseActivity(), MainContract.View {
 
     override lateinit var presenter : MainContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
-        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
-        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_main)
 
         presenter = MainPresenter(this)
@@ -46,6 +38,8 @@ class MainActivity : AppCompatActivity(), MainContract.View {
 
     override fun startActivity(target: Class<*>) = startActivity(Intent(this, target))
 
+    override fun hideKeyboard() {}
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.add, menu)
         menuInflater.inflate(R.menu.logout, menu)
@@ -63,15 +57,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         return true
     }
 
-    private var lastTimeBackPressed: Long = 0
+    override fun finishAffinityActivity() = finishAffinity()
 
-    override fun onBackPressed() {
-
-        if (System.currentTimeMillis() - lastTimeBackPressed < 2500) {
-            finishAffinity()
-        } else {
-            ToastMessage.toastMessage(this, "한번 더 누르면 종료합니다.", "info")
-            lastTimeBackPressed = System.currentTimeMillis()
-        }
-    }
+    override fun onBackPressed() = presenter.backPressed(this)
 }

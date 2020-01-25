@@ -1,5 +1,6 @@
 package com.memorandum.ui
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import com.memorandum.R
@@ -30,5 +31,5 @@ class LoginActivity : BaseActivity(), LoginContract.View {
 
     override fun startActivity(target: Class<*>) =  startActivity(Intent(this, target))
 
-    override fun showToast(message: String, type: String) = ToastMessage.toastMessage(this, message, type)
+    override fun showToast(context: Context, message: String, type: String) = ToastMessage.toastMessage(context, message, type)
 }

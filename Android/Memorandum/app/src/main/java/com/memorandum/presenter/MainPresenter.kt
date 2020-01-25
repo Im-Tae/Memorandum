@@ -10,6 +10,7 @@ import com.memorandum.util.FirebaseManager
 class MainPresenter(override val view: MainContract.View) : MainContract.Presenter {
 
     override var memoList: ArrayList<Memo> = arrayListOf()
+    override var lastTimeBackPressed: Long = 0
 
     override fun getMemo(context: Context) {
         FirebaseFirestore
@@ -26,6 +27,16 @@ class MainPresenter(override val view: MainContract.View) : MainContract.Present
             }
     }
         view.setMemo(memoList)
+    }
+
+    override fun backPressed(context: Context) {
+
+        if (System.currentTimeMillis() - lastTimeBackPressed < 2500)
+            view.finishAffinityActivity()
+        else {
+            view.showToast(context, "한번 더 누르면 종료합니다.", "info")
+            lastTimeBackPressed = System.currentTimeMillis()
+        }
     }
 
     override fun changeActivity(target: Class<*>) = view.startActivity(target)
