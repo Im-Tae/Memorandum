@@ -1,6 +1,6 @@
 package com.memorandum.contract
 
-import android.content.Context
+import com.baoyz.widget.PullRefreshLayout
 import com.memorandum.base.BasePresenter
 import com.memorandum.base.BaseView
 import com.memorandum.model.Memo
@@ -10,6 +10,7 @@ class MainContract {
 
         fun setMemo(memoList: ArrayList<Memo>)
         fun finishAffinityActivity()
+        fun layoutRefresh()
     }
 
     interface Presenter: BasePresenter<View> {
@@ -17,8 +18,9 @@ class MainContract {
         var memoList: ArrayList<Memo>
         var lastTimeBackPressed: Long
 
-        fun getMemo(context: Context)
-        fun logout(context: Context)
-        fun backPressed(context: Context)
+        fun getMemo()
+        fun logout()
+        fun backPressed()
+        fun refreshMemo(swipeRefreshLayout: PullRefreshLayout)
     }
 }

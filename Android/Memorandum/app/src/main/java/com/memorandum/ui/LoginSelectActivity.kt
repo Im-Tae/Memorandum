@@ -27,7 +27,7 @@ class LoginSelectActivity : BaseActivity(), LoginSelectContract.View {
 
         googleSignInClient = GoogleSignIn.getClient(this,googleSignInOptions)
 
-        presenter = LoginSelectPresenter(this)
+        presenter = LoginSelectPresenter(this, this)
 
         Animation.appearAnimation(this, changeLoginButton, changeRegisterButton, goolgeLoginButton, text)
 
@@ -40,7 +40,7 @@ class LoginSelectActivity : BaseActivity(), LoginSelectContract.View {
 
     override fun startActivityForGoogleSignInResult(signInIntent: Intent) = startActivityForResult(signInIntent,100)
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) = presenter.googleLogin(this, requestCode, resultCode, data)
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) = presenter.googleLogin(requestCode, resultCode, data)
 
     override fun startActivity(target: Class<*>) = startActivity(Intent(this, target))
 

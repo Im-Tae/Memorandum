@@ -10,13 +10,13 @@ import com.memorandum.ui.MainActivity
 import com.memorandum.util.GetNetworkInfo
 import com.memorandum.util.SharedPreferenceManager
 
-class LoginSelectPresenter(override val view: LoginSelectContract.View) : LoginSelectContract.Presenter {
+class LoginSelectPresenter(override val view: LoginSelectContract.View, override val context: Context) : LoginSelectContract.Presenter {
 
     override fun changeActivity(target: Class<*>) = view.startActivity(target)
 
     override fun googleSignIn(signInIntent : Intent) = view.startActivityForGoogleSignInResult(signInIntent)
 
-    override fun googleLogin(context: Context, requestCode: Int, resultCode: Int, data: Intent?) {
+    override fun googleLogin(requestCode: Int, resultCode: Int, data: Intent?) {
 
         if (requestCode == 100) {
             val result = Auth.GoogleSignInApi.getSignInResultFromIntent(data)
@@ -37,6 +37,4 @@ class LoginSelectPresenter(override val view: LoginSelectContract.View) : LoginS
             }
         }
     }
-
-
 }

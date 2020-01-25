@@ -1,18 +1,19 @@
 package com.memorandum.presenter
 
 import android.content.Context
+import com.baoyz.widget.PullRefreshLayout
 import com.google.firebase.firestore.FirebaseFirestore
 import com.memorandum.contract.MainContract
 import com.memorandum.util.SharedPreferenceManager
 import com.memorandum.model.Memo
 import com.memorandum.util.FirebaseManager
 
-class MainPresenter(override val view: MainContract.View) : MainContract.Presenter {
+class MainPresenter(override val view: MainContract.View, override val context: Context) : MainContract.Presenter {
 
     override var memoList: ArrayList<Memo> = arrayListOf()
     override var lastTimeBackPressed: Long = 0
 
-    override fun getMemo(context: Context) {
+    override fun getMemo() {
         FirebaseFirestore
             .getInstance()
             .collection(SharedPreferenceManager.getUserId(context).toString())
@@ -25,11 +26,11 @@ class MainPresenter(override val view: MainContract.View) : MainContract.Present
                     memoList.add(userDTO!!)
                 }
             }
-    }
+        }
         view.setMemo(memoList)
     }
 
-    override fun backPressed(context: Context) {
+    override fun backPressed() {
 
         if (System.currentTimeMillis() - lastTimeBackPressed < 2500)
             view.finishAffinityActivity()
@@ -39,7 +40,12 @@ class MainPresenter(override val view: MainContract.View) : MainContract.Present
         }
     }
 
+    override fun refreshMemo(swipeRefreshLayout: PullRefreshLayout) {
+        swipeRefreshLayout.postDelayed({ view.layoutRefresh() }, 1000)
+        getMemo()
+    }
+
     override fun changeActivity(target: Class<*>) = view.startActivity(target)
 
-    override fun logout(context: Context) = FirebaseManager.logout(context)
+    override fun logout() = FirebaseManager.logout(context)
 }

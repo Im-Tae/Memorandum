@@ -20,15 +20,14 @@ class MainActivity : BaseActivity(), MainContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        presenter = MainPresenter(this)
+        presenter = MainPresenter(this, this)
 
-        presenter.getMemo(this)
+        presenter.getMemo()
 
-        swipeRefreshLayout.setOnRefreshListener {
-            swipeRefreshLayout.postDelayed( Runnable { swipeRefreshLayout.setRefreshing(false) }, 1000)
-            presenter.getMemo(this)
-        }
+        swipeRefreshLayout.setOnRefreshListener { presenter.refreshMemo(swipeRefreshLayout) }
     }
+
+    override fun layoutRefresh() = swipeRefreshLayout.setRefreshing(false)
 
     override fun setMemo(memoList: ArrayList<Memo>) {
         recyclerView.adapter?.notifyDataSetChanged()
@@ -51,7 +50,7 @@ class MainActivity : BaseActivity(), MainContract.View {
         when(item?.itemId) {
             R.id.action_addMemo -> presenter.changeActivity(WriteMemoActivity::class.java)
 
-            R.id.action_logout -> presenter.logout(this)
+            R.id.action_logout -> presenter.logout()
         }
 
         return true
@@ -59,5 +58,5 @@ class MainActivity : BaseActivity(), MainContract.View {
 
     override fun finishAffinityActivity() = finishAffinity()
 
-    override fun onBackPressed() = presenter.backPressed(this)
+    override fun onBackPressed() = presenter.backPressed()
 }
