@@ -1,22 +1,14 @@
 package com.memorandum.contract
 
 import android.content.Context
+import com.memorandum.base.BasePresenter
+import com.memorandum.base.BaseView
 
 class LoginContract {
-    interface View {
-        val presenter: Presenter
+    interface View: BaseView<Presenter>
 
-        fun hideKeyboard()
-        fun showToast(message: String, type: String)
-        fun startActivity(target: Class<*>)
-
-    }
-
-    interface Presenter {
-        val view: View
+    interface Presenter: BasePresenter<View> {
 
         fun login(context: Context, login_email: String, login_password: String, login_email_view: android.view.View, login_password_view : android.view.View)
-        fun changeActivity(target: Class<*>)
-
     }
 }

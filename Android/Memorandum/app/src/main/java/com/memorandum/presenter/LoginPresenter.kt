@@ -1,7 +1,6 @@
 package com.memorandum.presenter
 
 import android.content.Context
-import android.text.Layout
 import android.view.View
 import com.memorandum.contract.LoginContract
 import com.memorandum.util.*
@@ -21,5 +20,4 @@ class LoginPresenter(override val view: LoginContract.View) : LoginContract.Pres
     }
 
     override fun changeActivity(target: Class<*>) = view.startActivity(target)
-
 }

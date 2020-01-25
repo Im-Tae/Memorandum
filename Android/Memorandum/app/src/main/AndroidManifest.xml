@@ -12,6 +12,7 @@
         android:theme="@style/MainTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:icon">
+        <activity android:name=".base.BaseActivity"/>
         <activity android:name=".ui.ShowAndEditMemoActivity" android:theme="@style/ShowMemoTheme"/>
         <activity android:name=".ui.WriteMemoActivity" android:theme="@style/ShowMemoTheme" />
         <activity android:name=".ui.PasswordResetActivity" />
