@@ -12,7 +12,10 @@ class MainPresenter(override val view: MainContract.View) : MainContract.Present
     override var memoList: ArrayList<Memo> = arrayListOf()
 
     override fun getMemo(context: Context) {
-        FirebaseFirestore.getInstance().collection(SharedPreferenceManager.getUserId(context).toString()).addSnapshotListener { querySnapshot, _ ->
+        FirebaseFirestore
+            .getInstance()
+            .collection(SharedPreferenceManager.getUserId(context).toString())
+            .addSnapshotListener { querySnapshot, _ ->
 
             memoList.clear()
             if (querySnapshot != null) {

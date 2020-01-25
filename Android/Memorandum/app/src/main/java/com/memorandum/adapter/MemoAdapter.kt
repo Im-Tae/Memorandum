@@ -34,11 +34,9 @@ class MemoAdapter(private val context: Context, private val memoList: ArrayList<
         holder.titleText?.text = note.title
         holder.contentText?.text = note.content
 
-        holder.bottom_wrapper?.setOnClickListener {
-            deleteMemo(position)
-        }
+        holder.bottom_wrapper?.setOnClickListener { deleteMemo(position) }
 
-        holder.swipeLayout?.setOnDoubleClickListener { swipeLayout: SwipeLayout, b: Boolean ->
+        holder.swipeLayout?.setOnDoubleClickListener { _: SwipeLayout, _: Boolean ->
 
             val intent = Intent(context, ShowAndEditMemoActivity::class.java)
             DataSingleton.getInstance()?.title =  memoList[position].title
@@ -49,11 +47,15 @@ class MemoAdapter(private val context: Context, private val memoList: ArrayList<
 
 
 
-    fun deleteMemo(position: Int) {
+    private fun deleteMemo(position: Int) {
 
-        FirebaseFirestore.getInstance()?.collection(SharedPreferenceManager.getUserId(context).toString()).document(memoList[position].title.toString() + memoList[position].content.toString()).delete()
-            .addOnCompleteListener {
-            }
+        FirebaseFirestore
+            .getInstance()
+            .collection(SharedPreferenceManager.getUserId(context).toString())
+            .document(memoList[position].title.toString() + memoList[position].content.toString())
+            .delete()
+            .addOnCompleteListener {}
+
         memoList.removeAt(position)
         notifyItemRemoved(position)
         notifyItemRangeChanged(position, memoList.size)

@@ -24,7 +24,9 @@ class LoginSelectPresenter(override val view: LoginSelectContract.View) : LoginS
                 val account = result.signInAccount
                 val credential = GoogleAuthProvider.getCredential(account?.idToken, null)
 
-                FirebaseAuth.getInstance().signInWithCredential(credential)
+                FirebaseAuth
+                    .getInstance()
+                    .signInWithCredential(credential)
 
                 if (GetNetworkInfo.networkInfo(context)) {
                     SharedPreferenceManager.setUserId(context, account?.email.toString())
