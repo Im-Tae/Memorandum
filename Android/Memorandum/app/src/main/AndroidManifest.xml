@@ -13,9 +13,7 @@
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:icon">
         <activity android:name=".ui.ShowAndEditMemoActivity" android:theme="@style/ShowMemoTheme"/>
-        <activity
-            android:name=".ui.WriteMemoActivity"
-            android:theme="@style/ShowMemoTheme" />
+        <activity android:name=".ui.WriteMemoActivity" android:theme="@style/ShowMemoTheme" />
         <activity android:name=".ui.PasswordResetActivity" />
         <activity android:name=".ui.RegisterActivity" />
         <activity android:name=".ui.LoginSelectActivity" />
@@ -27,9 +25,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.LoginActivity" />
-        <activity
-            android:name=".ui.MainActivity"
-            android:theme="@style/MemoTheme" />
+        <activity android:name=".ui.MainActivity" android:theme="@style/MemoTheme" />
     </application>
 
 </manifest>

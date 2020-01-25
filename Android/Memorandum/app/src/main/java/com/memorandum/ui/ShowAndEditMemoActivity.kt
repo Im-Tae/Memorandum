@@ -29,15 +29,22 @@ class ShowAndEditMemoActivity : AppCompatActivity(), ShowAndEditMemoContract.Vie
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_show_and_edit_memo)
 
-        presenter = ShowAndEditMemoPresenter(this)
-        
         title = ""
+
+        presenter = ShowAndEditMemoPresenter(this)
         fireStore = FirebaseFirestore.getInstance()
 
-        if (DataSingleton.getInstance()?.content != "") {
-            showMemoTitle.setText(DataSingleton.getInstance()?.title)
-            showMemoContent.setText(DataSingleton.getInstance()?.content)
-        }
+        presenter.getDataForShowMemo()
+    }
+
+    override fun changeShowMemoEnable() {
+        showMemoTitle.isEnabled = true
+        showMemoContent.isEnabled = true
+    }
+
+    override fun setDataForShowMemo(title: String?, content: String?) {
+        showMemoTitle.setText(title)
+        showMemoContent.setText(content)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -49,39 +56,17 @@ class ShowAndEditMemoActivity : AppCompatActivity(), ShowAndEditMemoContract.Vie
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
 
         when(item?.itemId) {
-            R.id.action_edit -> {
-                showMemoTitle.isEnabled = true
-                showMemoContent.isEnabled = true
-            }
+            R.id.action_edit -> presenter.editMemo()
 
             R.id.action_save -> {
-                if(DataSingleton.getInstance()?.title != showMemoTitle.text.toString() || DataSingleton.getInstance()?.content != showMemoContent.text.toString()) {
-                    UpdateMemo()
-                }
+                presenter.saveMemo(this, fireStore, showMemoTitle.text.toString(), showMemoContent.text.toString())
 
                 finish()
-                overridePendingTransition(
-                    R.anim.slide_down,
-                    R.anim.slide_down
-                )
+                overridePendingTransition(R.anim.slide_down, R.anim.slide_down)
             }
         }
 
         return true
-    }
-
-    private fun UpdateMemo() {
-
-        fireStore?.collection(SharedPreferenceManager.getUserId(this).toString())?.document(DataSingleton.getInstance()?.title + DataSingleton.getInstance()?.content)?.delete()?.addOnCompleteListener {
-
-            val memo = Memo(
-                showMemoTitle.text.toString(),
-                showMemoContent.text.toString()
-            )
-
-            fireStore?.collection(SharedPreferenceManager.getUserId(this).toString())?.document(showMemoTitle.text.toString() + showMemoContent.text.toString())
-                ?.set(memo)
-        }
     }
 
     override fun onBackPressed() { }
