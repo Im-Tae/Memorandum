@@ -1,18 +1,13 @@
 package com.memorandum.contract
 
-import android.content.Context
+import com.memorandum.base.BasePresenter
+import com.memorandum.base.BaseView
 
 class PasswordResetContract {
-    interface View {
-        val presenter: Presenter
+    interface View: BaseView<Presenter>
 
-        fun hideKeyboard()
-        fun showToast(message: String, type: String)
-    }
+    interface Presenter: BasePresenter<View> {
 
-    interface Presenter {
-        val view: View
-
-        fun resetPassword(context: Context, reset_email : String, reset_email_view: android.view.View)
+        fun resetPassword(reset_email : String, reset_email_view: android.view.View)
     }
 }
