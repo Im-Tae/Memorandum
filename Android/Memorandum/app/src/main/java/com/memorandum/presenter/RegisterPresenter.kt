@@ -9,7 +9,7 @@ import com.memorandum.util.GetNetworkInfo
 
 class RegisterPresenter(override val view: RegisterContract.View, override val context: Context) : RegisterContract.Presenter {
 
-    override fun register(context: Context, register_email: String, register_password: String, register_email_view: View, register_password_view: View) {
+    override fun register(register_email: String, register_password: String, register_email_view: View, register_password_view: View) {
 
         view.hideKeyboard()
 

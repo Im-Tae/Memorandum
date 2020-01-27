@@ -7,7 +7,7 @@ import com.memorandum.model.Memo
 import com.memorandum.util.DataSingleton
 import com.memorandum.util.SharedPreferenceManager
 
-class ShowAndEditMemoPresenter(override val view: ShowAndEditMemoContract.View) : ShowAndEditMemoContract.Presenter {
+class ShowAndEditMemoPresenter(override val view: ShowAndEditMemoContract.View, override val context: Context) : ShowAndEditMemoContract.Presenter {
 
     override fun editMemo() = view.changeShowMemoEnable()
 
@@ -16,12 +16,14 @@ class ShowAndEditMemoPresenter(override val view: ShowAndEditMemoContract.View) 
             view.setDataForShowMemo(DataSingleton.getInstance()?.title, DataSingleton.getInstance()?.content)
     }
 
-    override fun saveMemo(context: Context, fireStore: FirebaseFirestore?, showMemoTitle: String, showMemoContent: String) {
+    override fun saveMemo(fireStore: FirebaseFirestore?, showMemoTitle: String, showMemoContent: String) {
         if(DataSingleton.getInstance()?.title != showMemoTitle || DataSingleton.getInstance()?.content != showMemoContent)
-            updateMemo(context, fireStore, showMemoTitle, showMemoContent)
+            updateMemo(fireStore, showMemoTitle, showMemoContent)
     }
 
-    private fun updateMemo(context: Context, fireStore: FirebaseFirestore?, showMemoTitle: String, showMemoContent: String)
+    override fun changeActivity(target: Class<*>) {}
+
+    private fun updateMemo(fireStore: FirebaseFirestore?, showMemoTitle: String, showMemoContent: String)
     {
         fireStore
             ?.collection(SharedPreferenceManager.getUserId(context).toString())

@@ -9,6 +9,6 @@ class RegisterContract {
 
     interface Presenter: BasePresenter<View> {
 
-        fun register(context: Context, register_email: String, register_password: String, register_email_view: android.view.View, register_password_view: android.view.View)
+        fun register(register_email: String, register_password: String, register_email_view: android.view.View, register_password_view: android.view.View)
     }
 }

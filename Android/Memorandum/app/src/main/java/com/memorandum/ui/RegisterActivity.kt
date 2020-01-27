@@ -28,7 +28,7 @@ class RegisterActivity : BaseActivity(), RegisterContract.View {
 
         presenter = RegisterPresenter(this, this)
 
-        registerButton.setOnClickListener { presenter.register(this, register_email.text.toString().trim(), register_password.text.toString().trim(), register_email, register_password) }
+        registerButton.setOnClickListener { presenter.register(register_email.text.toString().trim(), register_password.text.toString().trim(), register_email, register_password) }
     }
 
     override fun hideKeyboard() = HideKeyboard.hideKeyboard(this.currentFocus, this)

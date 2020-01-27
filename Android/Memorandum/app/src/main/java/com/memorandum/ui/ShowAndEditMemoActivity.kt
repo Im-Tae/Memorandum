@@ -1,21 +1,18 @@
 package com.memorandum.ui
 
 import  android.content.pm.ActivityInfo
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.WindowManager
 import com.google.firebase.firestore.FirebaseFirestore
 import com.memorandum.R
+import com.memorandum.base.BaseActivity
 import com.memorandum.contract.ShowAndEditMemoContract
-import com.memorandum.util.DataSingleton
-import com.memorandum.util.SharedPreferenceManager
-import com.memorandum.model.Memo
 import com.memorandum.presenter.ShowAndEditMemoPresenter
 import kotlinx.android.synthetic.main.activity_show_and_edit_memo.*
 
-class ShowAndEditMemoActivity : AppCompatActivity(), ShowAndEditMemoContract.View {
+class ShowAndEditMemoActivity : BaseActivity(), ShowAndEditMemoContract.View {
 
     private var fireStore: FirebaseFirestore? = null
     override lateinit var presenter: ShowAndEditMemoContract.Presenter
@@ -31,7 +28,7 @@ class ShowAndEditMemoActivity : AppCompatActivity(), ShowAndEditMemoContract.Vie
 
         title = ""
 
-        presenter = ShowAndEditMemoPresenter(this)
+        presenter = ShowAndEditMemoPresenter(this, this)
         fireStore = FirebaseFirestore.getInstance()
 
         presenter.getDataForShowMemo()
@@ -59,7 +56,7 @@ class ShowAndEditMemoActivity : AppCompatActivity(), ShowAndEditMemoContract.Vie
             R.id.action_edit -> presenter.editMemo()
 
             R.id.action_save -> {
-                presenter.saveMemo(this, fireStore, showMemoTitle.text.toString(), showMemoContent.text.toString())
+                presenter.saveMemo(fireStore, showMemoTitle.text.toString(), showMemoContent.text.toString())
 
                 finish()
                 overridePendingTransition(R.anim.slide_down, R.anim.slide_down)
@@ -68,6 +65,10 @@ class ShowAndEditMemoActivity : AppCompatActivity(), ShowAndEditMemoContract.Vie
 
         return true
     }
+
+    override fun hideKeyboard() {}
+
+    override fun startActivity(target: Class<*>) {}
 
     override fun onBackPressed() { }
 }
