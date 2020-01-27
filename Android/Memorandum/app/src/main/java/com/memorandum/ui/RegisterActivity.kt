@@ -1,16 +1,17 @@
 package com.memorandum.ui
 
+import android.content.Context
 import android.content.pm.ActivityInfo
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
 import com.memorandum.R
+import com.memorandum.base.BaseActivity
 import com.memorandum.contract.RegisterContract
 import com.memorandum.presenter.RegisterPresenter
 import com.memorandum.util.*
 import kotlinx.android.synthetic.main.activity_register.*
 
-class RegisterActivity : AppCompatActivity(), RegisterContract.View {
+class RegisterActivity : BaseActivity(), RegisterContract.View {
 
     override lateinit var presenter: RegisterContract.Presenter
 
@@ -25,14 +26,16 @@ class RegisterActivity : AppCompatActivity(), RegisterContract.View {
 
         Animation.appearAnimation(this, register_email, register_password, registerButton)
 
-        presenter = RegisterPresenter(this)
+        presenter = RegisterPresenter(this, this)
 
         registerButton.setOnClickListener { presenter.register(this, register_email.text.toString().trim(), register_password.text.toString().trim(), register_email, register_password) }
     }
 
     override fun hideKeyboard() = HideKeyboard.hideKeyboard(this.currentFocus, this)
 
-    override fun showToast(message: String, type: String) = ToastMessage.toastMessage(this, message, type)
+    override fun showToast(context: Context, message: String, type: String) = ToastMessage.toastMessage(context, message, type)
+
+    override fun startActivity(target: Class<*>) {}
 
     override fun onBackPressed() {
         super.onBackPressed()

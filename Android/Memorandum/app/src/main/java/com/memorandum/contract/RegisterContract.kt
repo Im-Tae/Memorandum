@@ -1,18 +1,13 @@
 package com.memorandum.contract
 
 import android.content.Context
+import com.memorandum.base.BasePresenter
+import com.memorandum.base.BaseView
 
 class RegisterContract {
-    interface View {
-        val presenter: Presenter
+    interface View: BaseView<Presenter>
 
-
-        fun hideKeyboard()
-        fun showToast(message: String, type: String)
-    }
-
-    interface Presenter {
-        val view: View
+    interface Presenter: BasePresenter<View> {
 
         fun register(context: Context, register_email: String, register_password: String, register_email_view: android.view.View, register_password_view: android.view.View)
     }

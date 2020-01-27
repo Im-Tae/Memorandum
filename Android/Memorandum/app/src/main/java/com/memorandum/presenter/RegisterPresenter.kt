@@ -7,7 +7,7 @@ import com.memorandum.util.CheckValid
 import com.memorandum.util.FirebaseManager
 import com.memorandum.util.GetNetworkInfo
 
-class RegisterPresenter(override val view: RegisterContract.View) : RegisterContract.Presenter {
+class RegisterPresenter(override val view: RegisterContract.View, override val context: Context) : RegisterContract.Presenter {
 
     override fun register(context: Context, register_email: String, register_password: String, register_email_view: View, register_password_view: View) {
 
@@ -17,6 +17,8 @@ class RegisterPresenter(override val view: RegisterContract.View) : RegisterCont
             if (CheckValid.checkValid(context, register_email, register_password, register_email_view, register_password_view))
                 FirebaseManager.registerUser(context, register_email, register_password)
 
-        else view.showToast("와이파이 연결을 확인해주세요.", "error")
+        else view.showToast(context, "와이파이 연결을 확인해주세요.", "error")
     }
+
+    override fun changeActivity(target: Class<*>) {}
 }
