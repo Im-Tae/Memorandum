@@ -1,13 +1,17 @@
 package com.memorandum.contract
 
-class SplashContract {
-    interface View {
-        val presenter: Presenter
+import com.memorandum.base.BasePresenter
+import com.memorandum.base.BaseView
 
+class SplashContract {
+    interface View: BaseView<Presenter> {
+
+        fun showAnimation()
+        fun finishActivity()
     }
 
-    interface Presenter {
-        val view: View
+    interface Presenter: BasePresenter<View> {
 
+        fun splash()
     }
 }

@@ -45,7 +45,7 @@ class MainPresenter(override val view: MainContract.View, override val context: 
         getMemo()
     }
 
-    override fun changeActivity(target: Class<*>) = view.startActivity(target)
+    override fun changeActivity(target: Class<*>) = view.startActivity(context, target)
 
     override fun logout() = FirebaseManager.logout(context)
 }

@@ -12,7 +12,7 @@ import com.memorandum.util.SharedPreferenceManager
 
 class LoginSelectPresenter(override val view: LoginSelectContract.View, override val context: Context) : LoginSelectContract.Presenter {
 
-    override fun changeActivity(target: Class<*>) = view.startActivity(target)
+    override fun changeActivity(target: Class<*>) = view.startActivity(context, target)
 
     override fun googleSignIn(signInIntent : Intent) = view.startActivityForGoogleSignInResult(signInIntent)
 
@@ -30,7 +30,7 @@ class LoginSelectPresenter(override val view: LoginSelectContract.View, override
 
                 if (GetNetworkInfo.networkInfo(context)) {
                     SharedPreferenceManager.setUserId(context, account?.email.toString())
-                    view.startActivity(MainActivity::class.java)
+                    view.startActivity(context, MainActivity::class.java)
                     view.showToast(context,"로그인 완료", "success")
 
                 } else view.showToast(context, "와이파이 연결을 확인해주세요.", "error")

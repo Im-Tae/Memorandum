@@ -29,7 +29,7 @@ class LoginActivity : BaseActivity(), LoginContract.View {
 
     override fun hideKeyboard() = HideKeyboard.hideKeyboard(this.currentFocus, this)
 
-    override fun startActivity(target: Class<*>) =  startActivity(Intent(this, target))
+    override fun startActivity(context: Context, target: Class<*>) =  startActivity(Intent(context, target))
 
     override fun showToast(context: Context, message: String, type: String) = ToastMessage.toastMessage(context, message, type)
 }

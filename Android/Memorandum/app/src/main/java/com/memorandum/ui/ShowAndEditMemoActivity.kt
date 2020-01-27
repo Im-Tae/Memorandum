@@ -1,5 +1,6 @@
 package com.memorandum.ui
 
+import android.content.Context
 import  android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.Menu
@@ -68,7 +69,7 @@ class ShowAndEditMemoActivity : BaseActivity(), ShowAndEditMemoContract.View {
 
     override fun hideKeyboard() {}
 
-    override fun startActivity(target: Class<*>) {}
+    override fun startActivity(context: Context, target: Class<*>) {}
 
     override fun onBackPressed() { }
 }

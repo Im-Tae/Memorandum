@@ -35,7 +35,7 @@ class RegisterActivity : BaseActivity(), RegisterContract.View {
 
     override fun showToast(context: Context, message: String, type: String) = ToastMessage.toastMessage(context, message, type)
 
-    override fun startActivity(target: Class<*>) {}
+    override fun startActivity(context: Context, target: Class<*>) {}
 
     override fun onBackPressed() {
         super.onBackPressed()

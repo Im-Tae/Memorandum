@@ -1,5 +1,6 @@
 package com.memorandum.ui
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -35,7 +36,7 @@ class MainActivity : BaseActivity(), MainContract.View {
         recyclerView.adapter = memoAdapter
     }
 
-    override fun startActivity(target: Class<*>) = startActivity(Intent(this, target))
+    override fun startActivity(context: Context, target: Class<*>) = startActivity(Intent(context, target))
 
     override fun hideKeyboard() {}
 
