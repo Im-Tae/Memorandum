@@ -1,17 +1,13 @@
 package com.memorandum.ui
 
 import android.content.Context
-import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.WindowManager
 import com.google.firebase.firestore.FirebaseFirestore
 import com.memorandum.R
 import com.memorandum.base.BaseActivity
 import com.memorandum.contract.WriteMemoContract
-import com.memorandum.util.SharedPreferenceManager
-import com.memorandum.model.Memo
 import com.memorandum.presenter.WriteMemoPresenter
 import kotlinx.android.synthetic.main.activity_write_memo.*
 

@@ -1,6 +1,5 @@
 package com.memorandum.contract
 
-import android.content.Context
 import com.memorandum.base.BasePresenter
 import com.memorandum.base.BaseView
 

@@ -1,6 +1,5 @@
 package com.memorandum.contract
 
-import android.content.Context
 import com.google.firebase.firestore.FirebaseFirestore
 import com.memorandum.base.BasePresenter
 import com.memorandum.base.BaseView

@@ -34,7 +34,7 @@ class MemoAdapter(private val context: Context, private val memoList: ArrayList<
         holder.titleText?.text = note.title
         holder.contentText?.text = note.content
 
-        holder.bottom_wrapper?.setOnClickListener { deleteMemo(position) }
+        holder.bottomWrapper?.setOnClickListener { deleteMemo(position) }
 
         holder.swipeLayout?.setOnDoubleClickListener { _: SwipeLayout, _: Boolean ->
 
@@ -64,7 +64,7 @@ class MemoAdapter(private val context: Context, private val memoList: ArrayList<
     inner class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
         val titleText = itemView?.findViewById<TextView?>(R.id.titleText)
         val contentText = itemView?.findViewById<TextView?>(R.id.contentText)
-        val bottom_wrapper = itemView?.findViewById<LinearLayout?>(R.id.bottom_wrapper)
+        val bottomWrapper = itemView?.findViewById<LinearLayout?>(R.id.bottom_wrapper)
         val swipeLayout = itemView?.findViewById<SwipeLayout?>(R.id.swipeLayout)
     }
 }

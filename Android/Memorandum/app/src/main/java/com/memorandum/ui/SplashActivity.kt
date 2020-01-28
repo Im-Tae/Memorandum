@@ -2,7 +2,6 @@ package com.memorandum.ui
 
 import android.content.Context
 import android.content.Intent
-import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
@@ -10,7 +9,6 @@ import android.view.animation.AnimationUtils
 import com.memorandum.R
 import com.memorandum.contract.SplashContract
 import com.memorandum.presenter.SplashPresenter
-import com.memorandum.util.SharedPreferenceManager
 import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashActivity : AppCompatActivity(), SplashContract.View {
