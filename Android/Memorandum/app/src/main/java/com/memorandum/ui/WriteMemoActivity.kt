@@ -19,17 +19,10 @@ class WriteMemoActivity : BaseActivity(), WriteMemoContract.View {
 
     override lateinit var presenter: WriteMemoContract.Presenter
     private var fireStore: FirebaseFirestore? = null
-    private var memoList = arrayListOf<Memo>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        overridePendingTransition(
-            R.anim.slide_up,
-            R.anim.slide_up
-        )
-        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        overridePendingTransition(R.anim.slide_up, R.anim.slide_up)
         setContentView(R.layout.activity_write_memo)
 
         title = ""
@@ -52,29 +45,13 @@ class WriteMemoActivity : BaseActivity(), WriteMemoContract.View {
 
         when(item?.itemId) {
             R.id.action_save -> {
-                if (writeMemoContent.text.toString() != "" && checkMemo(writeMemoTitle.text.toString() + writeMemoContent.text.toString())) {
-                    addMemo()
-                }
+                presenter.saveMemo(fireStore, writeMemoTitle.text.toString(), writeMemoContent.text.toString())
+
                 finish()
                 overridePendingTransition(R.anim.slide_down, R.anim.slide_down)
             }
         }
 
-        return true
-    }
-
-    private fun addMemo() {
-        val memo = Memo(
-            writeMemoTitle.text.toString(),
-            writeMemoContent.text.toString()
-        )
-        fireStore?.collection(SharedPreferenceManager.getUserId(this).toString())?.document(writeMemoTitle.text.toString() + writeMemoContent.text.toString())?.set(memo)
-    }
-
-    private fun checkMemo(memo: String): Boolean {
-        for (i in memoList.indices) {
-            if (memoList[i].title + memoList[i].content == memo) return false
-        }
         return true
     }
 
