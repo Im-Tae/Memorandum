@@ -90,5 +90,3 @@ Moblie, PC interlocking notepad project
 [RecyclerView]( https://developer.android.com/reference/android/support/v7/widget/RecyclerView )
 
 [Firebase]( https://firebase.google.com/docs/android/setup )
-
-[Anko]( https://github.com/Kotlin/anko ) -  Now deprecated.
