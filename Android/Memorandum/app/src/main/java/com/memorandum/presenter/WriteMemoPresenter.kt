@@ -6,8 +6,9 @@ import com.memorandum.contract.WriteMemoContract
 import com.memorandum.model.Memo
 import com.memorandum.util.SharedPreferenceManager
 
-class WriteMemoPresenter(override val view: WriteMemoContract.View, override val context: Context) : WriteMemoContract.Presenter {
+class WriteMemoPresenter(override val view: WriteMemoContract.View) : WriteMemoContract.Presenter {
 
+    override val context: Context = view.getContext()
     override var memoList: ArrayList<Memo> = arrayListOf()
 
     override fun saveMemo(fireStore: FirebaseFirestore?, writeMemoTitle: String, writeMemoContent: String) {

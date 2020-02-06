@@ -8,10 +8,11 @@ import com.memorandum.util.SharedPreferenceManager
 import com.memorandum.model.Memo
 import com.memorandum.util.FirebaseManager
 
-class MainPresenter(override val view: MainContract.View, override val context: Context) : MainContract.Presenter {
+class MainPresenter(override val view: MainContract.View) : MainContract.Presenter {
 
     override var memoList: ArrayList<Memo> = arrayListOf()
     override var lastTimeBackPressed: Long = 0
+    override val context: Context = view.getContext()
 
     override fun getMemo() {
         FirebaseFirestore

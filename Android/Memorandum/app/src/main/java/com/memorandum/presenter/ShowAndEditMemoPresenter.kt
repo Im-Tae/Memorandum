@@ -7,7 +7,9 @@ import com.memorandum.model.Memo
 import com.memorandum.util.DataSingleton
 import com.memorandum.util.SharedPreferenceManager
 
-class ShowAndEditMemoPresenter(override val view: ShowAndEditMemoContract.View, override val context: Context) : ShowAndEditMemoContract.Presenter {
+class ShowAndEditMemoPresenter(override val view: ShowAndEditMemoContract.View) : ShowAndEditMemoContract.Presenter {
+
+    override val context: Context = view.getContext()
 
     override fun editMemo() = view.changeShowMemoEnable()
 

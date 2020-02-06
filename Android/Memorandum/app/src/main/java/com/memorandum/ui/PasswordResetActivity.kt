@@ -19,10 +19,12 @@ class PasswordResetActivity : BaseActivity(), PasswordResetContract.View {
 
         Animation.appearAnimation(this, reset_email, resetButton)
 
-        presenter = PasswordResetPresenter(this, this)
+        presenter = PasswordResetPresenter(this)
 
         resetButton.setOnClickListener { presenter.resetPassword(reset_email.text.toString().trim(), reset_email) }
     }
+
+    override fun getContext(): Context = this
 
     override fun hideKeyboard() = HideKeyboard.hideKeyboard(this.currentFocus, this)
 

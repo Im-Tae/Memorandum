@@ -6,7 +6,9 @@ import com.memorandum.ui.LoginSelectActivity
 import com.memorandum.ui.MainActivity
 import com.memorandum.util.SharedPreferenceManager
 
-class SplashPresenter(override val view: SplashContract.View, override val context: Context) : SplashContract.Presenter {
+class SplashPresenter(override val view: SplashContract.View) : SplashContract.Presenter {
+
+    override val context: Context = view.getContext()
 
     override fun changeActivity(target: Class<*>) = view.startActivity(context, target)
 

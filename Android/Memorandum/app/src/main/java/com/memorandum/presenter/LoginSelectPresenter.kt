@@ -10,7 +10,9 @@ import com.memorandum.ui.MainActivity
 import com.memorandum.util.GetNetworkInfo
 import com.memorandum.util.SharedPreferenceManager
 
-class LoginSelectPresenter(override val view: LoginSelectContract.View, override val context: Context) : LoginSelectContract.Presenter {
+class LoginSelectPresenter(override val view: LoginSelectContract.View) : LoginSelectContract.Presenter {
+
+    override val context: Context = view.getContext()
 
     override fun changeActivity(target: Class<*>) = view.startActivity(context, target)
 

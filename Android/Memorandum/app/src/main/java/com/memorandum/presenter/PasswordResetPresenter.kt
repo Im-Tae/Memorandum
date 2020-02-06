@@ -7,7 +7,9 @@ import com.memorandum.util.CheckValid
 import com.memorandum.util.FirebaseManager
 import com.memorandum.util.GetNetworkInfo
 
-class PasswordResetPresenter(override val view: PasswordResetContract.View, override val context: Context) : PasswordResetContract.Presenter {
+class PasswordResetPresenter(override val view: PasswordResetContract.View) : PasswordResetContract.Presenter {
+
+    override val context: Context = view.getContext()
 
     override fun resetPassword(reset_email : String, reset_email_view: View) {
 

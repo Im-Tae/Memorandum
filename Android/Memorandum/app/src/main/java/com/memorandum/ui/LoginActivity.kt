@@ -20,12 +20,14 @@ class LoginActivity : BaseActivity(), LoginContract.View {
 
         Animation.appearAnimation(this, login_email, login_password, loginButton, changePasswordResetButton)
 
-        presenter = LoginPresenter(this, this)
+        presenter = LoginPresenter(this)
 
         loginButton.setOnClickListener { presenter.login(login_email.text.toString().trim(), login_password.text.toString().trim(), login_email, login_password) }
 
         changePasswordResetButton.setOnClickListener { presenter.changeActivity(PasswordResetActivity::class.java) }
     }
+
+    override fun getContext(): Context = this
 
     override fun hideKeyboard() = HideKeyboard.hideKeyboard(this.currentFocus, this)
 

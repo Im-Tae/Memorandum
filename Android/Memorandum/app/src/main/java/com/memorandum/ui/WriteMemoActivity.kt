@@ -23,10 +23,12 @@ class WriteMemoActivity : BaseActivity(), WriteMemoContract.View {
 
         title = ""
 
-        presenter = WriteMemoPresenter(this, this)
+        presenter = WriteMemoPresenter(this)
         fireStore = FirebaseFirestore.getInstance()
 
     }
+
+    override fun getContext(): Context = this
 
     override fun hideKeyboard() {}
 

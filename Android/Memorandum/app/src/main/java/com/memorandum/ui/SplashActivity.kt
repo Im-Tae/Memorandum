@@ -20,10 +20,12 @@ class SplashActivity : AppCompatActivity(), SplashContract.View {
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_splash)
 
-        presenter = SplashPresenter(this, this)
+        presenter = SplashPresenter(this)
 
         presenter.splash()
     }
+
+    override fun getContext(): Context = this
 
     override fun showAnimation() {
 

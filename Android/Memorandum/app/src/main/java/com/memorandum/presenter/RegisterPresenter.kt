@@ -7,7 +7,9 @@ import com.memorandum.util.CheckValid
 import com.memorandum.util.FirebaseManager
 import com.memorandum.util.GetNetworkInfo
 
-class RegisterPresenter(override val view: RegisterContract.View, override val context: Context) : RegisterContract.Presenter {
+class RegisterPresenter(override val view: RegisterContract.View) : RegisterContract.Presenter {
+
+    override val context: Context = view.getContext()
 
     override fun register(register_email: String, register_password: String, register_email_view: View, register_password_view: View) {
 

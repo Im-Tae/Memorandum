@@ -10,4 +10,5 @@ interface BaseView<T> {
     fun showToast(context: Context, message: String, type: String) = ToastMessage.toastMessage(context, message, type)
     fun startActivity(context: Context, target: Class<*>)
     fun hideKeyboard()
+    fun getContext(): Context
 }

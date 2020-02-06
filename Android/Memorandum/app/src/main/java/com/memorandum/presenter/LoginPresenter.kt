@@ -5,7 +5,9 @@ import android.view.View
 import com.memorandum.contract.LoginContract
 import com.memorandum.util.*
 
-class LoginPresenter(override val view: LoginContract.View, override val context: Context) : LoginContract.Presenter {
+class LoginPresenter(override val view: LoginContract.View) : LoginContract.Presenter {
+
+    override val context: Context = view.getContext()
 
     override fun login(login_email: String, login_password: String, login_email_view: View, login_password_view : View) {
 

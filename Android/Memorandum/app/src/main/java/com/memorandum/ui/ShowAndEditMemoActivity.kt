@@ -29,11 +29,13 @@ class ShowAndEditMemoActivity : BaseActivity(), ShowAndEditMemoContract.View {
 
         title = ""
 
-        presenter = ShowAndEditMemoPresenter(this, this)
+        presenter = ShowAndEditMemoPresenter(this)
         fireStore = FirebaseFirestore.getInstance()
 
         presenter.getDataForShowMemo()
     }
+
+    override fun getContext(): Context = this
 
     override fun changeShowMemoEnable() {
         showMemoTitle.isEnabled = true

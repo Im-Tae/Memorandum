@@ -12,6 +12,7 @@ import com.memorandum.model.Memo
 import com.memorandum.adapter.MemoAdapter
 import com.memorandum.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlin.collections.ArrayList
 
 class MainActivity : BaseActivity(), MainContract.View {
 
@@ -21,7 +22,7 @@ class MainActivity : BaseActivity(), MainContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        presenter = MainPresenter(this, this)
+        presenter = MainPresenter(this)
 
         presenter.getMemo()
 
@@ -29,6 +30,8 @@ class MainActivity : BaseActivity(), MainContract.View {
     }
 
     override fun layoutRefresh() = swipeRefreshLayout.setRefreshing(false)
+
+    override fun getContext(): Context = this
 
     override fun setMemo(memoList: ArrayList<Memo>) {
         recyclerView.adapter?.notifyDataSetChanged()
