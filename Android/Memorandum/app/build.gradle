@@ -69,7 +69,7 @@ dependencies {
 
     // Koin AndroidX ViewModel feature
     implementation "org.koin:koin-androidx-viewmodel:$koin_version"
-    
+
     // Koin for Unit tests
     testImplementation "org.koin:koin-test:$koin_version"
 }
